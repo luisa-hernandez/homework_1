@@ -2,6 +2,9 @@ package Homework_1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -142,7 +145,7 @@ public class University {
 				Scanner sc = new Scanner(System.in);
 				choice = sc.next().charAt(0);
 				// choices will go here
-				
+
 			}
 		} else {
 			System.out.println("Incorrect login.  Notifying the authorities.");
@@ -188,6 +191,30 @@ public class University {
 		}
 	}
 
+	public void save() {
+		/**
+		 * serialize the course list and the student list
+		 */
+
+//		File myFile = ("/Users/LuisaHernandez/Documents/courses.ser");
+		File myFile = new File("/Users/Zorro/arena/courses.ser");
+
+		// serialize course list
+		try {
+			FileOutputStream fileOut = new FileOutputStream("");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(courseList);
+			out.close();
+			fileOut.close();
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
+
+		// serialize student list
+		// TODO
+
+	}
+
 	public static void main(String[] args) {
 		// do all our stuff here
 		University ub = new University();
@@ -209,6 +236,7 @@ public class University {
 		} else {
 			System.out.println("You must enter admin or student.");
 		}
+		ub.save();
 
 	}
 
