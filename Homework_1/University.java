@@ -18,27 +18,74 @@ public class University {
 		admin = new Admin("Admin", "Admin001");
 
 		// TODO -- read course information from serialized file **if it exists**
-		//if it doesn't, call createCourseList
+		courseList = new ArrayList<Course>();
+		loadCourseList();
+
+		// if it doesn't, call createCourseList
 
 		// TODO -- create studentList from seralized file
 	}
 
-	private ArrayList<Course> loadCourseList(){
+	private void loadCourseList() {
 		/*
-		 * filePath -- path to serialized course information "MyUniversityCourses.ser"
+		 * filePath -- path to serialized course information
+		 * "MyUniversityCourses.ser"
 		 */
-		
-		return new ArrayList<Course>();
+
+		// try to load serialized courses
+
+		// set course list
+		createCoursesFromFile();
 	}
-	
-	private void saveCourses(){
+
+	private void createCoursesFromFile() {
+		/**
+		 * read courses csv file, create courses from it
+		 */
+		// path to find excel document
+		// File myFile = new File
+		// ("/Users/LuisaHernandez/Documents/MyUniversityCourses.csv");
+		File myFile = new File("/Users/Zorro/Documents/MyUniversityCourses.csv");
+
+		// creating scanner
+		Scanner input;
+//		ArrayList<Course> courseList = null;
+		try {
+			input = new Scanner(myFile);
+			// creating new array
+//			courseList = new ArrayList<Course>();
+			// this should skip first horizontal line of document
+			input.nextLine();
+			// reading lines
+			while (input.hasNextLine()) {
+				String lineData = input.nextLine();
+				// splitting by commas (excel feature)
+				String[] data = lineData.split(",");
+				Course myCourse = new Course(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]),
+						data[5], Integer.parseInt(data[6]), data[7]);
+				// adds data to courseList
+				courseList.add(myCourse);
+
+				// this is for testing and printing out what is contained in
+				// myCourse
+				// myCourse.print();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println();
+
+	}
+
+	private void saveCourses() {
 		/*
 		 * write courses out to serialized file
 		 * 
 		 */
-		
+
 	}
-	
+
 	private void createCourseList() {
 		// TODO Auto-generated method stub
 		// ("/Users/LuisaHernandez/Documents/MyUniversityCourses.csv");
