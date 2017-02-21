@@ -54,6 +54,27 @@ public class University {
 		// admin stuff goes here
 
 		// sign in
+		Scanner type = new Scanner(System.in);
+		System.out.println("Username: ");
+		String username = type.nextLine();
+		System.out.println("Password: ");
+		String password = type.nextLine();
+		if (username == "Admin" && password == "Admin001") {
+			char choice = 'a';
+			// create Admin object
+			Admin admin = new Admin();
+			while (choice != 'q') {
+				System.out.println("Add course:\ta");
+				System.out.println("Delete course:\td");
+				System.out.println("Edit course:\te");
+				System.out.println("Display course:\tc");
+				System.out.println("Register student:\tr");
+				System.out.println("Reports: \tt");
+				Scanner sc = new Scanner(System.in);
+				choice = sc.next().charAt(0);
+				//choices will go here
+			}
+		}
 	}
 
 	private void studentBlock() {
