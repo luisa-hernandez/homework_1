@@ -1,9 +1,11 @@
 package Homework_1;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -26,7 +28,7 @@ public class University {
 
 		// if it doesn't, call createCourseList
 
-		// TODO -- create studentList from seralized file
+		// TODO -- create studentList from serialized file
 	}
 
 	private void loadCourseList() {
@@ -35,10 +37,21 @@ public class University {
 		 * "MyUniversityCourses.ser"
 		 */
 
-		// try to load serialized courses
+		// ("/Users/LuisaHernandez/Documents/courses.ser");
+		File myFile = new File("/Users/Zorro/arena/courses.ser");
 
-		// set course list
-		createCoursesFromFile();
+		// try to load serialized courses
+		try {
+			FileInputStream fileIn = new FileInputStream(myFile);
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			courseList = (ArrayList<Course>) in.readObject();
+			in.close();
+			fileIn.close();
+		} catch (Exception e) {
+			// read from csv file (first run)
+			createCoursesFromFile();
+		}
+
 	}
 
 	private void createCoursesFromFile() {
@@ -48,7 +61,7 @@ public class University {
 		// path to find excel document
 		// File myFile = new File
 		// ("/Users/LuisaHernandez/Documents/MyUniversityCourses.csv");
-		File myFile = new File("/Users/Zorro/Documents/MyUniversityCourses.csv");
+		File myFile = new File("/Users/Zorro/arena/MyUniversityCourses.csv");
 
 		// creating scanner
 		Scanner input;
@@ -92,7 +105,7 @@ public class University {
 	private void createCourseList() {
 		// TODO Auto-generated method stub
 		// ("/Users/LuisaHernandez/Documents/MyUniversityCourses.csv");
-		File myFile = new File("/Users/Zorro/Documents/MyUniversityCourses.csv");
+		File myFile = new File("/Users/Zorro/arena/MyUniversityCourses.csv");
 
 		// creating scanner
 		Scanner input;
@@ -196,12 +209,12 @@ public class University {
 		 * serialize the course list and the student list
 		 */
 
-//		File myFile = ("/Users/LuisaHernandez/Documents/courses.ser");
+		// File myFile = ("/Users/LuisaHernandez/Documents/courses.ser");
 		File myFile = new File("/Users/Zorro/arena/courses.ser");
 
 		// serialize course list
 		try {
-			FileOutputStream fileOut = new FileOutputStream("");
+			FileOutputStream fileOut = new FileOutputStream(myFile);
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(courseList);
 			out.close();
