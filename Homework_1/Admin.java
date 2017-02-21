@@ -15,35 +15,37 @@ public class Admin {
 	//add a course method
 	public void addCourse (ArrayList<Course> cl){	
 		//ask user to enter new course name
-		Scanner course_Name = new Scanner(System.in);
+		Scanner cs = new Scanner(System.in);
 		System.out.println("Enter course name: ");
-		String courseName = course_Name.nextLine();
+		String courseName = cs.nextLine();
+		
 		//ask user to enter new course ID
-		Scanner course_Id = new Scanner(System.in);
 		System.out.println("Enter course ID: ");
-		String courseId = course_Id.nextLine();
+		String courseId = cs.nextLine();
+		
 		//ask user to enter new maximum number of students
-		Scanner max_Students = new Scanner(System.in);
 		System.out.println("Enter Maximum Number of Students: ");
-		int maxStudents = max_Students.nextInt();
+		int maxStudents = cs.nextInt();
+		
 		//ask user to enter new current number of students
-		Scanner current_Students = new Scanner(System.in);
 		System.out.println("Enter Current Number of Students: ");
-		int currentStudents = current_Students.nextInt();
+		int currentStudents = cs.nextInt();
+		
 		//ask user to enter new course instructor
-		Scanner course_Instructor = new Scanner(System.in);
 		System.out.println("Enter course Instructor: ");
-		String courseInstructor = course_Instructor.nextLine();
+		String courseInstructor = cs.nextLine();
+		
 		//ask user to enter new course section
-		Scanner course_Section = new Scanner(System.in);
 		System.out.println("Enter course Section: ");
-		int courseSection = course_Section.nextInt();
+		int courseSection = cs.nextInt();
+		
 		//ask user to enter new course location
-		Scanner course_Location = new Scanner(System.in);
 		System.out.println("Enter course Location: ");
-		String courseLocation = course_Location.nextLine();
+		String courseLocation = cs.nextLine();
+		
 		//create new objects of class Course
 		Course c = new Course(courseName, courseId, maxStudents, currentStudents, courseInstructor, courseSection, courseLocation);
+		
 		//add these objects to the class list
 		cl.add(c);
 	}
