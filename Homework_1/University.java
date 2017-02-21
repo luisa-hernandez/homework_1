@@ -82,7 +82,30 @@ public class University {
 		System.out.println("You are in the student block");
 
 		// sign in
-
+		// require student to type in a username and password
+		Scanner type = new Scanner(System.in);
+		System.out.println("Username: ");
+		String username = type.nextLine();
+		System.out.println("Password: ");
+		String password = type.nextLine();
+		// if the username and password are correct, follow through with
+		// these options
+		if (username == "Admin" && password == "Admin001") {
+			char choice = 'a';
+			// create Student object
+			Student student = new Student();
+			while (choice != 'q') {
+				System.out.println("View all courses available:\tv ");
+				System.out.println("View all courses that are not full:\tf ");
+				System.out.println("Register in a course:\tr");
+				System.out.println("Withdraw from a course:\tw");
+				System.out.println("View all courses you are enrolled in:\te");
+				// create a new scanner
+				Scanner sc = new Scanner(System.in);
+				choice = sc.next().charAt(0);
+				//choices will go here
+			}
+		}
 	}
 
 	public static void main(String[] args) {
