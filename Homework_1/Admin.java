@@ -224,28 +224,28 @@ public class Admin {
 		}
 	}
 	
-	public void studentCourses(ArrayList<Course> cl) {
-		Scanner sc= new Scanner(System.in);
-		//ask the user to enter a student's first name
-		System.out.println("Enter student's first name: ");
-		String firstName = sc.nextLine();
-		
-		Scanner s_c= new Scanner(System.in);
-		//ask the user to enter a student's last name
-		System.out.println("Enter student's last name: ");
-		String lastName = s_c.nextLine();
-	
-		//looping through the array list
-		System.out.println("The following are courses that a student is in: ");
-			for(int i=0; i<cl.size(); i++){
-				for(int j=0; i<cl.get(i).List_Of_Names.size(); j++){
-					//if the first name and last name match up, display the course information
-					if (firstName == cl.get(i).firstName && lastName ==cl.get(i).lastName){
-						System.out.println(cl.get(i));
-					}
-				}
-			}
-		}
+//	public void studentCourses(ArrayList<Course> cl) {
+//		Scanner sc= new Scanner(System.in);
+//		//ask the user to enter a student's first name
+//		System.out.println("Enter student's first name: ");
+//		String firstName = sc.nextLine();
+//		
+//		Scanner s_c= new Scanner(System.in);
+//		//ask the user to enter a student's last name
+//		System.out.println("Enter student's last name: ");
+//		String lastName = s_c.nextLine();
+//	
+//		//looping through the array list
+//		System.out.println("The following are courses that a student is in: ");
+//			for(int i=0; i<cl.size(); i++){
+//				for(int j=0; i<cl.get(i).List_Of_Names.size(); j++){
+//					//if the first name and last name match up, display the course information
+//					if (firstName == cl.get(i).firstName && lastName ==cl.get(i).lastName){
+//						System.out.println(cl.get(i).Course_Name);
+//					}
+//				}
+//			}
+//		}
 	
 //	public void sortCourses(ArrayList<Course> courseList){
 //		Collections.sort(courseList);
@@ -265,8 +265,8 @@ public class Admin {
 			switch (choice){
 //				case 'a': sortCourses(courseList);
 //					break;
-				case 'c': studentCourses(courseList);
-					break;
+//				case 'c': studentCourses(courseList);
+//					break;
 				case 'f': viewFullCourses(courseList);
 					break;
 				case 's': registeredStudents(courseList);
