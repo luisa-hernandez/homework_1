@@ -26,7 +26,7 @@ public class University {
 		try {
 			input = new Scanner(myFile);
 			// creating new array
-			ArrayList<Course> courseList = new ArrayList<Course>();
+			courseList = new ArrayList<Course>();
 			// this should skip first horizontal line of document
 			input.nextLine();
 			// reading lines
