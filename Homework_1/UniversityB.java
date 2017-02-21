@@ -52,7 +52,7 @@ public class UniversityB {
 			if (username == "Admin" && password == "Admin001") {
 				char choice = 'a';
 				// create Admin object
-				Admin admin = new Admin();
+//				Admin admin = new Admin();
 				while (choice != 'q') {
 					System.out.println("Add course:\ta");
 					System.out.println("Delete course:\td");
@@ -99,7 +99,7 @@ public class UniversityB {
 			if (username == "Admin" && password == "Admin001") {
 				char choice = 'a';
 				// create Student object
-				Student student = new Student();
+//				Student student = new Student();
 				while (choice != 'q') {
 					System.out.println("View all courses available:\tv ");
 					System.out.println("View all courses that are not full:\tf ");

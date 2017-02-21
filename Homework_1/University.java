@@ -11,9 +11,10 @@ public class University {
 	 * Instance Variables
 	 */
 	ArrayList<Course> courseList;
+	Admin admin;
 
 	public University() {
-
+		admin = new Admin("Admin", "Admin001");
 	}
 
 	private void createCourseList() {
@@ -59,17 +60,9 @@ public class University {
 		String username = type.nextLine();
 		System.out.println("Password: ");
 		String password = type.nextLine();
-		
-		//TODO --revisit
-		//see if user is a valid user:
-		
-		//Student stud = getStudent(username);
-		if (stud != null &&  stud.login(username, password));
-		
-		if (username == "Admin" && password == "Admin001") {
+
+		if (admin.login(username, password)) {
 			char choice = 'a';
-			// create Admin object
-			Admin admin = new Admin();
 			while (choice != 'q') {
 				System.out.println("Add course:\ta");
 				System.out.println("Delete course:\td");
@@ -79,8 +72,10 @@ public class University {
 				System.out.println("Reports: \tt");
 				Scanner sc = new Scanner(System.in);
 				choice = sc.next().charAt(0);
-				//choices will go here
+				// choices will go here
 			}
+		} else {
+			System.out.println("Incorrect login.  Notifying the authorities.");
 		}
 	}
 
@@ -96,11 +91,19 @@ public class University {
 		System.out.println("Password: ");
 		String password = type.nextLine();
 		// if the username and password are correct, follow through with
+		// TODO --revisit
+		// see if user is a valid user:
+
+		// Student stud = getStudent(username);
+		// if (!(stud != null && stud.login(username, password))){
+		// System.out.println("Not a valid student!");
+		// return;
+		// }
 		// these options
-		if (username == "Admin" && password == "Admin001") {
+		if (false) {
 			char choice = 'a';
 			// create Student object
-			Student student = new Student();
+			// Student student = new Student();
 			while (choice != 'q') {
 				System.out.println("View all courses available:\tv ");
 				System.out.println("View all courses that are not full:\tf ");
@@ -110,7 +113,7 @@ public class University {
 				// create a new scanner
 				Scanner sc = new Scanner(System.in);
 				choice = sc.next().charAt(0);
-				//choices will go here
+				// choices will go here
 			}
 		}
 	}
