@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collections;
 
-public class AdminB {
+public class AdminB extends UserB{
 	//create a constructor
 	public AdminB(){	
 	}

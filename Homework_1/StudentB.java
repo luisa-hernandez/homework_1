@@ -2,7 +2,7 @@ package Homework_1;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class StudentB {
+public class StudentB extends UserB{
 	//create a constructor
 	public StudentB(){	
 	}

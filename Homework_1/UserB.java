@@ -1,8 +1,20 @@
-//import java.util.Scanner;
-//import java.io.*;
-//
-//package Homework_1;
-//
+package Homework_1;
+
+import java.util.Scanner;
+import java.io.*;
+
+public class UserB {
+	Scanner sc = new Scanner(System.in);
+	if (answer == "admin") {
+		System.out.println("Username: ");
+		String username = sc.nextLine();
+		System.out.println("Password: ");
+		String password = sc.nextLine();
+	}
+}
+
+
+
 //String[] courseList = {};
 //
 //public class User {
