@@ -8,10 +8,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collections;
 
-public class Admin {
+public class Admin extends User{
 	//create a constructor
-	public Admin(){	
+	public Admin(String username, String password){	
+		super(username, password);
 	}
+	
 	//add a course method
 	public void addCourse (ArrayList<Course> cl){	
 		//ask user to enter new course name
