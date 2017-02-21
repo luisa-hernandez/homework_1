@@ -49,11 +49,11 @@ public class University {
 
 		// creating scanner
 		Scanner input;
-//		ArrayList<Course> courseList = null;
+		// ArrayList<Course> courseList = null;
 		try {
 			input = new Scanner(myFile);
 			// creating new array
-//			courseList = new ArrayList<Course>();
+			// courseList = new ArrayList<Course>();
 			// this should skip first horizontal line of document
 			input.nextLine();
 			// reading lines
@@ -142,6 +142,7 @@ public class University {
 				Scanner sc = new Scanner(System.in);
 				choice = sc.next().charAt(0);
 				// choices will go here
+				
 			}
 		} else {
 			System.out.println("Incorrect login.  Notifying the authorities.");

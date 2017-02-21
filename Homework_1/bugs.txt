@@ -1,1 +1,1 @@
--nulls in courselist when reading from file
+-nulls in courselist when reading from file -- possible bug
