@@ -59,6 +59,13 @@ public class University {
 		String username = type.nextLine();
 		System.out.println("Password: ");
 		String password = type.nextLine();
+		
+		//TODO --revisit
+		//see if user is a valid user:
+		
+		//Student stud = getStudent(username);
+		if (stud != null &&  stud.login(username, password));
+		
 		if (username == "Admin" && password == "Admin001") {
 			char choice = 'a';
 			// create Admin object

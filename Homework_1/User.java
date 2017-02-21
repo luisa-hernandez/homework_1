@@ -1,20 +1,23 @@
-//import java.util.Scanner;
-//import java.io.*;
-//
-//package Homework_1;
-//
-//String[] courseList = {};
-//
-//public class User {
-//	//path to find excel document
-//	File myFile = new File ("/Users/LuisaHernandez/Documents/MyUniversityCourses.csv");
-//	Scanner input = new Scanner(myFile);
-//	while(input.hasNextLine()){
-//		String lineData = input.nextLine();
-//		String [] data = lineData.split(" ");
-//		Course myCourse = new Course(data[0], data[1],data[2],data[3],data[4]);
-//		courseList.add(myCourse);
-//	}
-//
-//	
-//}
+package Homework_1;
+
+import java.util.Scanner;
+
+public class User {
+
+	private String username;
+	private String password;
+
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
+	public boolean login(String username, String password) {
+
+		if (this.username.compareTo(username) == 0 && this.password.compareTo(password) == 0){
+			return true;
+		}
+		return false;
+	}
+
+}
