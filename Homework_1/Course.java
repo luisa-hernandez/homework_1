@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.ArrayList;
 
 public class Course {
-	//initializing variables
+	// initializing variables
 	public String Course_Name;
 	public String Course_Id;
 	public int Maximum_Students;
@@ -13,36 +13,24 @@ public class Course {
 	public String Course_Instructor;
 	public int Course_Section_Number;
 	public String Course_Location;
-	public ArrayList <String> Student_List;
-	//empty constructor 
-	Course() {
-	}
+	public ArrayList<String> Student_List;
+
+
 	public boolean compareTo(Course c) {
 		return c.Current_Students < this.Current_Students;
-//		return c.Maximum_Students.compareTo(this.Maximum_Students);	
+		// return c.Maximum_Students.compareTo(this.Maximum_Students);
 	}
-	
-	public Course(String coursename, String courseid, int maximumstudents, int currentstudents, String courseinstructor, int coursesectionnumber, String courselocation) {
+
+	public Course(String coursename, String courseid, int maximumstudents, int currentstudents, String courseinstructor,
+			int coursesectionnumber, String courselocation) {
 		this.Course_Name = coursename;
 		this.Course_Id = courseid;
 		this.Maximum_Students = maximumstudents;
 		this.Current_Students = currentstudents;
-//		this.List_Of_Names = listofnames;
-		this.Course_Instructor = courseinstructor; 
+		// this.List_Of_Names = listofnames;
+		this.Course_Instructor = courseinstructor;
 		this.Course_Section_Number = coursesectionnumber;
 		this.Course_Location = courselocation;
 	}
-	public void print(){
-		System.out.println(Course_Name);
-		System.out.println(Course_Id);
-		System.out.println(Maximum_Students);
-		System.out.println(Current_Students);
-		System.out.println(List_Of_Names);
-		System.out.println(Course_Instructor);
-		System.out.println(Course_Section_Number);
-		System.out.println(Course_Location);
-	}
-	
-	
-	
+
 }
