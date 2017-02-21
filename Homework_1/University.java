@@ -12,11 +12,33 @@ public class University {
 	 */
 	ArrayList<Course> courseList;
 	Admin admin;
+	ArrayList<Student> studentList;
 
 	public University() {
 		admin = new Admin("Admin", "Admin001");
+
+		// TODO -- read course information from serialized file **if it exists**
+		//if it doesn't, call createCourseList
+
+		// TODO -- create studentList from seralized file
 	}
 
+	private ArrayList<Course> loadCourseList(){
+		/*
+		 * filePath -- path to serialized course information "MyUniversityCourses.ser"
+		 */
+		
+		return new ArrayList<Course>();
+	}
+	
+	private void saveCourses(){
+		/*
+		 * write courses out to serialized file
+		 * 
+		 */
+		
+	}
+	
 	private void createCourseList() {
 		// TODO Auto-generated method stub
 		// ("/Users/LuisaHernandez/Documents/MyUniversityCourses.csv");
