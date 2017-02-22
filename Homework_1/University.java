@@ -82,15 +82,13 @@ public class University {
 		// ("/Users/LuisaHernandez/Documents/MyUniversityCourses.csv");
 		File myFile = new File("/Users/Zorro/arena/MyUniversityCourses.csv");
 
-		// ArrayList<Course> courseList = null;
 		try {
-			// creating new array
-			// courseList = new ArrayList<Course>();
+			Scanner fileInput = new Scanner(myFile);
 			// this should skip first horizontal line of document
-			input.nextLine();
+			fileInput.nextLine();
 			// reading lines
-			while (input.hasNextLine()) {
-				String lineData = input.nextLine();
+			while (fileInput.hasNextLine()) {
+				String lineData = fileInput.nextLine();
 				// splitting by commas (excel feature)
 				String[] data = lineData.split(",");
 				Course myCourse = new Course(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]),
@@ -106,8 +104,6 @@ public class University {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println();
-
 	}
 
 	private void adminMainMenu() {
