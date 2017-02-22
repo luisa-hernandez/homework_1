@@ -92,7 +92,7 @@ public class Admin extends User {
 
 	// edit a course method
 	public void editCourse() {
-		int index = courseIndex();
+		int index = findCourse();
 
 		// looping through the array list
 		if (index > -1) {
@@ -159,10 +159,12 @@ public class Admin extends User {
 				System.out.println("invalid choice");
 			}
 
+		} else {
+			System.out.println("Course not found.\n");
 		}
 	}
 
-	public int courseIndex() {
+	public int findCourse() {
 		/**
 		 * find index of course in courses ArrayList, or -1 if not found
 		 */
@@ -193,9 +195,11 @@ public class Admin extends User {
 		 * course information
 		 */
 
-		int index = courseIndex();
+		int index = findCourse();
 		if (index > -1) {
 			courses.get(index).printInfo();
+		} else {
+			System.out.println("Course not found.");
 		}
 
 	}
@@ -291,7 +295,7 @@ public class Admin extends User {
 		/**
 		 * print registered students' names
 		 */
-		int index = courseIndex();
+		int index = findCourse();
 		Course course = courses.get(index);
 
 		for (Student stu : course.students) {
