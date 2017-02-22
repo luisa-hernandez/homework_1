@@ -112,11 +112,11 @@ public class University {
 
 	}
 
-	private void mainMenu() {
+	private void adminMainMenu() {
 		admin.mainMenu();
 	}
 
-	private void studentBlock() {
+	private void studentMenu() {
 		// student stuff goes here
 		System.out.println("You are in the student block");
 
@@ -176,14 +176,14 @@ public class University {
 				// go to admin block
 				// TODO --unshunt
 				try {
-					ub.mainMenu();
+					ub.adminMainMenu();
 				} catch (Exception e) {
 					System.out.println("Not implemented!");
 				}
 
 			} else if (choice == 's') {
 				// go to student block
-				ub.studentBlock();
+				ub.studentMenu();
 			} else if (choice != 'q') {
 				System.out.println("invalid choice");
 			}
