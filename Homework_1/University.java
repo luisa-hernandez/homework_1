@@ -29,6 +29,28 @@ public class University {
 		// if it doesn't, call createCourseList
 
 		// TODO -- create studentList from serialized file
+		studentList = new ArrayList<Student>();
+		loadStudents();
+
+	}
+
+	private void loadStudents() {
+		/**
+		 * load students from a file
+		 */
+		// File studFile = ("/Users/LuisaHernandez/Documents/studs.ser");
+		File studFile = new File("/Users/Zorro/arena/studs.ser");
+
+		try {
+			FileInputStream fileIn = new FileInputStream(studFile);
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			studentList = (ArrayList<Student>) in.readObject();
+			in.close();
+			fileIn.close();
+		} catch (Exception e) {
+			// first time running
+		}
+
 	}
 
 	private void loadCourseList() {
@@ -272,7 +294,19 @@ public class University {
 		}
 
 		// serialize student list
-		// TODO
+		// File studFile = ("/Users/LuisaHernandez/Documents/studs.ser");
+		File studFile = new File("/Users/Zorro/arena/studs.ser");
+
+		// serialize student list
+		try {
+			FileOutputStream fileOut = new FileOutputStream(studFile);
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(studentList);
+			out.close();
+			fileOut.close();
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
 
 	}
 
