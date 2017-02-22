@@ -21,7 +21,7 @@ public class University {
 	private static Scanner in;
 
 	public University() {
-		// create course and student listes
+		// create course and student lists
 		courses = new ArrayList<Course>();
 		loadCourseList();
 
@@ -112,47 +112,6 @@ public class University {
 
 	}
 
-	private void saveCourses() {
-		/*
-		 * write courses out to serialized file
-		 * 
-		 */
-
-	}
-
-	private void createCourseList() {
-		// TODO Auto-generated method stub
-		// ("/Users/LuisaHernandez/Documents/MyUniversityCourses.csv");
-		File myFile = new File("/Users/Zorro/arena/MyUniversityCourses.csv");
-
-		// creating scanner
-		Scanner input;
-		try {
-			input = new Scanner(myFile);
-			// creating new array
-			courses = new ArrayList<Course>();
-			// this should skip first horizontal line of document
-			input.nextLine();
-			// reading lines
-			while (input.hasNextLine()) {
-				String lineData = input.nextLine();
-				// splitting by commas (excel feature)
-				String[] data = lineData.split(",");
-				Course myCourse = new Course(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]),
-						data[5], Integer.parseInt(data[6]), data[7]);
-				// adds data to courseList
-				courses.add(myCourse);
-
-				// this is for testing and printing out what is contained in
-				// myCourse
-				// myCourse.print();
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
 	private void adminBlock() {
 		/**
 		 * administer the courses and students
@@ -238,39 +197,7 @@ public class University {
 	}
 
 	public void save() {
-		/**
-		 * serialize the course list and the student list
-		 */
-
-		// File myFile = ("/Users/LuisaHernandez/Documents/courses.ser");
-		File myFile = new File("/Users/Zorro/arena/courses.ser");
-
-		// serialize course list
-		try {
-			FileOutputStream fileOut = new FileOutputStream(myFile);
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(courses);
-			out.close();
-			fileOut.close();
-		} catch (IOException i) {
-			i.printStackTrace();
-		}
-
-		// serialize student list
-		// File studFile = ("/Users/LuisaHernandez/Documents/studs.ser");
-		File studFile = new File("/Users/Zorro/arena/studs.ser");
-
-		// serialize student list
-		try {
-			FileOutputStream fileOut = new FileOutputStream(studFile);
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(students);
-			out.close();
-			fileOut.close();
-		} catch (IOException i) {
-			i.printStackTrace();
-		}
-
+		admin.save();
 	}
 
 	public static void main(String[] args) {

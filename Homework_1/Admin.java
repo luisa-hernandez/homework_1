@@ -3,10 +3,12 @@ package Homework_1;
 import java.awt.Choice;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Collections;
 import java.util.List;
 
@@ -441,6 +443,52 @@ public class Admin extends User {
 				break;
 			}
 
+		}
+	}
+
+	public void save() {
+		saveCourses();
+		saveStudents();
+	}
+
+	public void saveCourses() {
+		/**
+		 * serialize the course list
+		 */
+
+		// File myFile = ("/Users/LuisaHernandez/Documents/courses.ser");
+		File myFile = new File("/Users/Zorro/arena/courses.ser");
+
+		// serialize course list
+		try {
+			FileOutputStream fileOut = new FileOutputStream(myFile);
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(courses);
+			out.close();
+			fileOut.close();
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
+
+	}
+
+	private void saveStudents() {
+		/**
+		 * serialize student list
+		 */
+
+		// File studFile = ("/Users/LuisaHernandez/Documents/studs.ser");
+		File studFile = new File("/Users/Zorro/arena/studs.ser");
+
+		// serialize student list
+		try {
+			FileOutputStream fileOut = new FileOutputStream(studFile);
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(students);
+			out.close();
+			fileOut.close();
+		} catch (IOException i) {
+			i.printStackTrace();
 		}
 	}
 
