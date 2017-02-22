@@ -307,6 +307,7 @@ public class Admin extends User {
 	// Collections.sort(courseList);
 	// }
 
+	
 	public void reports(ArrayList<Course> courseList) {
 		char choice = 'a';
 		while (choice != 'q') {
@@ -336,6 +337,45 @@ public class Admin extends User {
 				writeCourses(courseList);
 				break;
 			}
+		}
+	}
+
+	public void manageCourses() throws Exception {
+		char choice = 'a';
+		while (choice != 'q') {
+			System.out.println("Add course:\t\ta");
+			System.out.println("Delete course:\t\td");
+			System.out.println("Edit course:\t\te");
+			System.out.println("Display course:\t\tc");
+			System.out.println("Register student:\tr");
+			System.out.println("Reports:\t\tt");
+			System.out.println("Quit:\t\tq");
+			Scanner sc = new Scanner(System.in);
+			choice = sc.next().charAt(0);
+			// choices will go here
+			switch (choice) {
+			case 'a':
+				addCourse();
+				break;
+			case 'd':
+				deleteCourse();
+				break;
+			case 'e':
+				editCourse();
+				 break;
+			case 'c':
+				displayCourse();;
+				break;
+			case 'r':
+				registerStudent();
+				break;
+			case 't':
+				throw new Exception("Not Implemented");
+				// break;
+			default:
+				break;
+			}
+
 		}
 	}
 

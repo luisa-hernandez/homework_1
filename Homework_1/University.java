@@ -153,10 +153,11 @@ public class University {
 		}
 	}
 
-	private void adminBlock() throws Exception {
-		System.out.println("You are in the admin block");
-		// admin stuff goes here
-
+	private void adminBlock() {
+		/**
+		 * administer the courses and students
+		 */
+		
 		// sign in
 		Scanner type = new Scanner(System.in);
 		System.out.println("Username: ");
@@ -165,42 +166,7 @@ public class University {
 		String password = type.nextLine();
 
 		if (admin.login(username, password)) {
-			char choice = 'a';
-			while (choice != 'q') {
-				System.out.println("Add course:\t\ta");
-				System.out.println("Delete course:\t\td");
-				System.out.println("Edit course:\t\te");
-				System.out.println("Display course:\t\tc");
-				System.out.println("Register student:\tr");
-				System.out.println("Reports:\t\tt");
-				System.out.println("Quit:\t\tq");
-				Scanner sc = new Scanner(System.in);
-				choice = sc.next().charAt(0);
-				// choices will go here
-				switch (choice) {
-				case 'a':
-					admin.addCourse();
-					break;
-				case 'd':
-					admin.deleteCourse();
-					break;
-				case 'e':
-					admin.editCourse();
-					 break;
-				case 'c':
-					admin.displayCourse();;
-					break;
-				case 'r':
-					admin.registerStudent();
-					break;
-				case 't':
-					throw new Exception("Not Implemented");
-					// break;
-				default:
-					break;
-				}
-
-			}
+			admin.manageCourses();
 		} else {
 			System.out.println("Incorrect login.  Notifying the authorities.");
 		}
