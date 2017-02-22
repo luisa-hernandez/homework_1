@@ -45,4 +45,16 @@ public class Course implements Serializable {
 		return Course_Section_Number;
 	}
 
+	public void printInfo() {
+		System.out.println("Course Name: " + Course_Name);
+		System.out.println("Course ID: " + Course_Id);
+		System.out.println("Maximum Students: " + Maximum_Students);
+		System.out.println("Current Students: " + Current_Students);
+		// System.out.println("List of Names: " +
+		// List_Of_Names);
+		System.out.println("Course Instructor: " + Course_Instructor);
+		System.out.println("Course Section Number: " + Course_Section_Number);
+		System.out.println("Course Location: " + Course_Location);
+	}
+
 }

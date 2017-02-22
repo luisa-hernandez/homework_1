@@ -88,94 +88,114 @@ public class Admin extends User {
 	}
 
 	// edit a course method
-	public void editCourse(ArrayList<Course> cl) {
-		Scanner sc = new Scanner(System.in);
-		// ask the user to enter which course they want to edit
-		System.out.println("Which course do you want to edit (by course ID)?  ");
-		String courseId = sc.nextLine();
-
-		// asking admin to enter course name
-		System.out.println("Enter course section number: ");
-		int course = sc.nextInt();
+	public void editCourse() {
+		int index = findIndex();
 
 		// looping through the array list
-		for (int i = 0; i < cl.size(); i++) {
+		if (index > -1) {
+			Course course = courses.get(index);
 			// if the course ID user input matches an existing ID, display which
 			// course information they would like to edit
-			if (courseId == cl.get(i).Course_Id && course == cl.get(i).Course_Section_Number) {
-				System.out.println("Which field do you want to change? ");
-				System.out.println("Course Name: \n1");
-				System.out.println("Course ID \n2");
-				System.out.println("Maximum Students \n3");
-				System.out.println("Current Students \n4");
-				System.out.println("List of Names \n5");
-				System.out.println("Course Instructor \n6");
-				System.out.println("Course Section Number \n7");
-				System.out.println("Course Location \n8");
+			System.out.println("Which field do you want to change? ");
+			System.out.println("Course Name: \n1");
+			System.out.println("Course ID \n2");
+			System.out.println("Maximum Students \n3");
+			System.out.println("Current Students \n4");
+			// System.out.println("List of Names \n5");
+			System.out.println("Course Instructor \n6");
+			System.out.println("Course Section Number \n7");
+			System.out.println("Course Location \n8");
 
-				// create a new scanner
-				Scanner new_sc = new Scanner(System.in);
-				int choice = new_sc.nextInt();
+			// get choice
+			Scanner sc = new Scanner(System.in);
+			int choice = sc.nextInt();
 
-				switch (choice) {
-				case 1:
-					System.out.println("Enter a new course name: ");
-					cl.get(i).Course_Name = sc.nextLine();
+			switch (choice) {
+			case 1:
+				System.out.println("Enter a new course name: ");
+				course.Course_Name = sc.nextLine();
+				break;
 
-				case 2:
-					System.out.println("Enter a new course ID: ");
-					cl.get(i).Course_Id = sc.nextLine();
+			case 2:
+				System.out.println("Enter a new course ID: ");
+				course.Course_Id = sc.nextLine();
+				break;
 
-				case 3:
-					System.out.println("Enter a new maximum number of students: ");
-					cl.get(i).Maximum_Students = sc.nextInt();
+			case 3:
+				System.out.println("Enter a new maximum number of students: ");
+				course.Maximum_Students = sc.nextInt();
+				break;
 
-				case 4:
-					System.out.println("Enter a new current number of students: ");
-					cl.get(i).Current_Students = sc.nextInt();
+			case 4:
+				System.out.println("Enter a new current number of students: ");
+				course.Current_Students = sc.nextInt();
+				break;
 
-				case 5:
-					System.out.println("Enter a new name of a student: ");
-					String firstName = sc.nextLine();
-					// cl.get(i).List_Of_Names.add(firstName);
+			// case 5:
+			// System.out.println("Enter a new name of a student: ");
+			// String firstName = sc.nextLine();
+			// // course.List_Of_Names.add(firstName);
+			// break;
 
-				case 6:
-					System.out.println("Enter a new course instructor: ");
-					cl.get(i).Course_Instructor = sc.nextLine();
+			case 6:
+				System.out.println("Enter a new course instructor: ");
+				course.Course_Instructor = sc.nextLine();
+				break;
 
-				case 7:
-					System.out.println("Enter a new course section number: ");
-					cl.get(i).Course_Section_Number = sc.nextInt();
+			case 7:
+				System.out.println("Enter a new course section number: ");
+				course.Course_Section_Number = sc.nextInt();
+				break;
 
-				case 8:
-					System.out.println("Enter a new course location: ");
-					cl.get(i).Course_Location = sc.nextLine();
-				}
+			case 8:
+				System.out.println("Enter a new course location: ");
+				course.Course_Location = sc.nextLine();
+				break;
+
+			default:
+				System.out.println("invalid choice");
+				break;
 			}
+
 		}
 	}
 
-	public void displayCourse(ArrayList<Course> cl) {
+	public int findIndex() {
+		/**
+		 * find index of course in courses ArrayList, or -1 if not found
+		 */
 		Scanner sc = new Scanner(System.in);
-		// ask the user to enter a course ID
-		System.out.println("Enter course Id: ");
-		String courseId = sc.nextLine();
-		// looping through the array list
-		for (int i = 0; i < cl.size(); i++) {
-			// if the course ID user input matches an existing ID, display the
-			// course information
-			if (courseId == cl.get(i).Course_Id) {
-				System.out.println("Course Name: " + cl.get(i).Course_Name);
-				System.out.println("Course ID: " + cl.get(i).Course_Id);
-				System.out.println("Maximum Students: " + cl.get(i).Maximum_Students);
-				System.out.println("Current Students: " + cl.get(i).Current_Students);
-				// System.out.println("List of Names: " +
-				// cl.get(i).List_Of_Names);
-				System.out.println("Course Instructor: " + cl.get(i).Course_Instructor);
-				System.out.println("Course Section Number: " + cl.get(i).Course_Section_Number);
-				System.out.println("Course Location: " + cl.get(i).Course_Location);
+		// asking admin to enter course ID
+		System.out.println("Enter course ID: ");
+		String id = sc.nextLine();
+
+		// asking admin to enter course name
+		System.out.println("Enter course section number: ");
+		int section = sc.nextInt();
+
+		int index = -1;
+		for (int x = 0; x < courses.size(); x++) {
+			// find index of matching course, if it exists
+			Course course = courses.get(x);
+			if (section == course.getSection() && id.compareTo(course.getId()) == 0) {
+				index = x;
 			}
 		}
+
+		return index;
+	}
+
+	public void displayCourse() {
+		/**
+		 * if the course ID user input matches an existing ID, display the
+		 * course information
+		 */
+
+		int index = findIndex();
+		if (index > -1) {
+			courses.get(index).printInfo();
+		}
+
 	}
 
 	public void registerStudent() {

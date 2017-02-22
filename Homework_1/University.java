@@ -185,11 +185,11 @@ public class University {
 					admin.deleteCourse();
 					break;
 				case 'e':
-					throw new Exception("Not Implemented");
-					// break;
+					admin.editCourse();
+					 break;
 				case 'c':
-					throw new Exception("Not Implemented");
-					// break;
+					admin.displayCourse();;
+					break;
 				case 'r':
 					admin.registerStudent();
 					break;
