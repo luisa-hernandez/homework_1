@@ -70,24 +70,15 @@ public class Admin extends User {
 		// create scanner
 		Scanner sc = new Scanner(System.in);
 
-		// asking admin to enter course ID
-		System.out.println("Enter course ID: ");
-		String id = sc.nextLine();
+		int index = findCourse();
 
-		// asking admin to enter course name
-		System.out.println("Enter course section number: ");
-		int section = sc.nextInt();
-
-		// loop through the array list
-		int index = -1;
-		for (int x = 0; x < courses.size(); x++) {
-			// find index of matching course, if it exists
-			Course course = courses.get(x);
-			if (section == course.getSection() && id.compareTo(course.getId()) == 0) {
-				index = x;
-			}
-		}
 		if (index > -1) {
+			// unregister students
+			Course course = courses.get(index);
+			for (Student stu : course.students) {
+				stu.removeCourse(course);
+			}
+			// remove course
 			courses.remove(index);
 		}
 	}
