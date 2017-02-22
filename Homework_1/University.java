@@ -18,6 +18,7 @@ public class University {
 	ArrayList<Course> courseList;
 	Admin admin;
 	ArrayList<Student> studentList;
+	private static Scanner in;
 
 	public University() {
 		admin = new Admin("Admin", "Admin001");
@@ -49,6 +50,7 @@ public class University {
 			fileIn.close();
 		} catch (Exception e) {
 			// first time running
+			System.out.println(e);
 		}
 
 	}
@@ -195,14 +197,13 @@ public class University {
 		if (admin.login(username, password)) {
 			char choice = 'a';
 			while (choice != 'q') {
-				System.out.println("Add course:\ta");
-				System.out.println("Delete course:\td");
-				System.out.println("Edit course:\te");
-				System.out.println("Display course:\tc");
-				System.out.println("Create student:\ts");
-				System.out.println("Register student:\tr");
-				System.out.println("Reports:\tt");
-				System.out.println("Quit:\tq");
+				System.out.println("Add course:\t\ta");
+				System.out.println("Delete course:\t\td");
+				System.out.println("Edit course:\t\te");
+				System.out.println("Display course:\t\tc");
+				System.out.println("Register student:\t\tr");
+				System.out.println("Reports:\t\tt");
+				System.out.println("Quit:\t\tq");
 				Scanner sc = new Scanner(System.in);
 				choice = sc.next().charAt(0);
 				// choices will go here
@@ -314,11 +315,7 @@ public class University {
 		// do all our stuff here
 		University ub = new University();
 
-		// create course list
-		ub.createCourseList();
-
-		// student or admin?
-		Scanner in = new Scanner(System.in);
+		in = new Scanner(System.in);
 		System.out.println("Speak ye, student or admin?");
 		String status = in.nextLine();
 

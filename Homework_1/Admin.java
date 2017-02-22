@@ -118,7 +118,7 @@ public class Admin extends User{
 					
 					case 5: System.out.println("Enter a new name of a student: ");
 					String firstName = sc.nextLine();
-					cl.get(i).List_Of_Names.add(firstName);
+//					cl.get(i).List_Of_Names.add(firstName);
 					
 					case 6: System.out.println("Enter a new course instructor: ");
 					cl.get(i).Course_Instructor = sc.nextLine();
@@ -146,7 +146,7 @@ public class Admin extends User{
 				System.out.println("Course ID: " + cl.get(i).Course_Id);
 				System.out.println("Maximum Students: " + cl.get(i).Maximum_Students);
 				System.out.println("Current Students: " + cl.get(i).Current_Students);
-				System.out.println("List of Names: " + cl.get(i).List_Of_Names);
+//				System.out.println("List of Names: " + cl.get(i).List_Of_Names);
 				System.out.println("Course Instructor: " + cl.get(i).Course_Instructor);
 				System.out.println("Course Section Number: " + cl.get(i).Course_Section_Number);
 				System.out.println("Course Location: " + cl.get(i).Course_Location);
@@ -167,7 +167,7 @@ public class Admin extends User{
 		
 		for(int i=0; i<cl.size(); i++){
 			if (courseId == cl.get(i).Course_Id){
-				cl.get(i).List_Of_Names.add(firstName + lastName);
+//				cl.get(i).List_Of_Names.add(firstName + lastName);
 				//also update the number of current students
 			}	
 		}
@@ -221,9 +221,9 @@ public class Admin extends User{
 		//looping through the array list
 		for(int i=0; i<cl.size(); i++){
 			if (courseId == cl.get(i).Course_Id) {
-				for(int j=0; i< cl.get(i).List_Of_Names.size(); j++){
-					System.out.println(cl.get(i).List_Of_Names.get(j));
-				}
+//				for(int j=0; i< cl.get(i).List_Of_Names.size(); j++){
+//					System.out.println(cl.get(i).List_Of_Names.get(j));
+//				}
 			}
 		}
 	}
