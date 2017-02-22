@@ -119,13 +119,13 @@ public class University {
 		Student stu = admin.getStudent();
 
 		if (stu != null) {
-			// sign in
+			// Username is first+last name, no spaces
+			String username = stu.getFirstName() + stu.getLastName();
 
-			System.out.println("Username (first+last name, no spaces): ");
-			String username = input.nextLine();
 			System.out.println("Password: ");
 			String password = input.nextLine();
 
+			// sign in
 			if (stu.login(username, password)) {
 				stu.mainMenu();
 			} else {
