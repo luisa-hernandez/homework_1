@@ -478,4 +478,49 @@ public class Admin extends User {
 		}
 	}
 
+	public void mainMenu() {
+		/**
+		 * administer the courses and students
+		 */
+
+		// sign in
+		Scanner type = new Scanner(System.in);
+		System.out.println("Username: ");
+		String username = type.nextLine();
+		System.out.println("Password: ");
+		String password = type.nextLine();
+
+		if (login(username, password)) {
+			try {
+				char choice = 'a';
+				while (choice != 'q') {
+					System.out.println("Manage Courses:\tm");
+					System.out.println("Reports:\tr");
+					System.out.println("Quit:\t\tq");
+
+					Scanner sc = new Scanner(System.in);
+					choice = sc.next().charAt(0);
+					switch (choice) {
+					case 'm':
+						manageCourses();
+						break;
+					case 'r':
+						reports();
+						break;
+					case 'q':
+						return;
+					default:
+						System.out.println("invalid choice");
+					}
+
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			System.out.println("Incorrect login.  Notifying the authorities.");
+		}
+	}
+
 }

@@ -112,49 +112,8 @@ public class University {
 
 	}
 
-	private void adminBlock() {
-		/**
-		 * administer the courses and students
-		 */
-
-		// sign in
-		Scanner type = new Scanner(System.in);
-		System.out.println("Username: ");
-		String username = type.nextLine();
-		System.out.println("Password: ");
-		String password = type.nextLine();
-
-		if (admin.login(username, password)) {
-			try {
-				char choice = 'a';
-				while (choice != 'q') {
-					System.out.println("Manage Courses:\tm");
-					System.out.println("Reports:\tr");
-					System.out.println("Quit:\t\tq");
-
-					Scanner sc = new Scanner(System.in);
-					choice = sc.next().charAt(0);
-					switch (choice) {
-					case 'm':
-						admin.manageCourses();
-						break;
-					case 'r':
-						admin.reports();
-						break;
-					case 'q':
-						return;
-					default:
-						System.out.println("invalid choice");
-					}
-
-				}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else {
-			System.out.println("Incorrect login.  Notifying the authorities.");
-		}
+	private void mainMenu() {
+		admin.mainMenu();
 	}
 
 	private void studentBlock() {
@@ -217,7 +176,7 @@ public class University {
 				// go to admin block
 				// TODO --unshunt
 				try {
-					ub.adminBlock();
+					ub.mainMenu();
 				} catch (Exception e) {
 					System.out.println("Not implemented!");
 				}
