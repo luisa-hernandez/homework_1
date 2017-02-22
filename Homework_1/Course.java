@@ -35,4 +35,14 @@ public class Course implements Serializable {
 		this.Course_Location = courselocation;
 	}
 
+	public String getId() {
+		// TODO Auto-generated method stub
+		return Course_Id;
+	}
+
+	public int getSection() {
+		// TODO Auto-generated method stub
+		return Course_Section_Number;
+	}
+
 }

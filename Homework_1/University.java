@@ -15,24 +15,20 @@ public class University {
 	/*
 	 * Instance Variables
 	 */
-	ArrayList<Course> courseList;
+	ArrayList<Course> courses;
 	Admin admin;
-	ArrayList<Student> studentList;
+	ArrayList<Student> students;
 	private static Scanner in;
 
 	public University() {
-		admin = new Admin("Admin", "Admin001");
-
-		// TODO -- read course information from serialized file **if it exists**
-		courseList = new ArrayList<Course>();
+		// create course and student listes
+		courses = new ArrayList<Course>();
 		loadCourseList();
 
-		// if it doesn't, call createCourseList
-
-		// TODO -- create studentList from serialized file
-		studentList = new ArrayList<Student>();
+		students = new ArrayList<Student>();
 		loadStudents();
 
+		admin = new Admin("Admin", "Admin001", students, courses);
 	}
 
 	private void loadStudents() {
@@ -45,12 +41,11 @@ public class University {
 		try {
 			FileInputStream fileIn = new FileInputStream(studFile);
 			ObjectInputStream in = new ObjectInputStream(fileIn);
-			studentList = (ArrayList<Student>) in.readObject();
+			students = (ArrayList<Student>) in.readObject();
 			in.close();
 			fileIn.close();
 		} catch (Exception e) {
 			// first time running
-			System.out.println(e);
 		}
 
 	}
@@ -68,7 +63,7 @@ public class University {
 		try {
 			FileInputStream fileIn = new FileInputStream(myFile);
 			ObjectInputStream in = new ObjectInputStream(fileIn);
-			courseList = (ArrayList<Course>) in.readObject();
+			courses = (ArrayList<Course>) in.readObject();
 			in.close();
 			fileIn.close();
 		} catch (Exception e) {
@@ -103,7 +98,7 @@ public class University {
 				Course myCourse = new Course(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]),
 						data[5], Integer.parseInt(data[6]), data[7]);
 				// adds data to courseList
-				courseList.add(myCourse);
+				courses.add(myCourse);
 
 				// this is for testing and printing out what is contained in
 				// myCourse
@@ -135,7 +130,7 @@ public class University {
 		try {
 			input = new Scanner(myFile);
 			// creating new array
-			courseList = new ArrayList<Course>();
+			courses = new ArrayList<Course>();
 			// this should skip first horizontal line of document
 			input.nextLine();
 			// reading lines
@@ -146,7 +141,7 @@ public class University {
 				Course myCourse = new Course(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]),
 						data[5], Integer.parseInt(data[6]), data[7]);
 				// adds data to courseList
-				courseList.add(myCourse);
+				courses.add(myCourse);
 
 				// this is for testing and printing out what is contained in
 				// myCourse
@@ -156,31 +151,6 @@ public class University {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	public void registerStudent() {
-		/**
-		 * Create a student object and add it to student list.
-		 */
-
-		// ask for username, password, and first & last name
-		Scanner sc = new Scanner(System.in);
-
-		System.out.println("Enter first name:\n");
-		String firstName = sc.nextLine();
-
-		System.out.println("Enter last name:\n");
-		String lastName = sc.nextLine();
-
-		System.out.println("Enter a password:\n");
-		String password = sc.nextLine();
-
-		// create a student object
-		Student stu = new Student(password, firstName, lastName);
-
-		// put student in list of students
-		studentList.add(stu);
-
 	}
 
 	private void adminBlock() throws Exception {
@@ -201,7 +171,7 @@ public class University {
 				System.out.println("Delete course:\t\td");
 				System.out.println("Edit course:\t\te");
 				System.out.println("Display course:\t\tc");
-				System.out.println("Register student:\t\tr");
+				System.out.println("Register student:\tr");
 				System.out.println("Reports:\t\tt");
 				System.out.println("Quit:\t\tq");
 				Scanner sc = new Scanner(System.in);
@@ -209,11 +179,11 @@ public class University {
 				// choices will go here
 				switch (choice) {
 				case 'a':
-					throw new Exception("Not Implemented");
-					// break;
+					admin.addCourse();
+					break;
 				case 'd':
-					throw new Exception("Not Implemented");
-					// break;
+					admin.deleteCourse();
+					break;
 				case 'e':
 					throw new Exception("Not Implemented");
 					// break;
@@ -221,7 +191,7 @@ public class University {
 					throw new Exception("Not Implemented");
 					// break;
 				case 'r':
-					registerStudent();
+					admin.registerStudent();
 					break;
 				case 't':
 					throw new Exception("Not Implemented");
@@ -287,7 +257,7 @@ public class University {
 		try {
 			FileOutputStream fileOut = new FileOutputStream(myFile);
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(courseList);
+			out.writeObject(courses);
 			out.close();
 			fileOut.close();
 		} catch (IOException i) {
@@ -302,7 +272,7 @@ public class University {
 		try {
 			FileOutputStream fileOut = new FileOutputStream(studFile);
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(studentList);
+			out.writeObject(students);
 			out.close();
 			fileOut.close();
 		} catch (IOException i) {

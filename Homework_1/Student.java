@@ -9,6 +9,9 @@ public class Student extends User implements Serializable{
 	private String firstName;
 	private String lastName;
 
+	public Student(){
+		
+	}
 	
 	public Student(String password, String firstName, String lastName) {
 		super(new String(firstName + lastName), password);
