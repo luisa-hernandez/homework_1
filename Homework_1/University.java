@@ -134,7 +134,32 @@ public class University {
 		}
 	}
 
-	private void adminBlock() {
+	public void registerStudent() {
+		/**
+		 * Create a student object and add it to student list.
+		 */
+
+		// ask for username, password, and first & last name
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Enter first name:\n");
+		String firstName = sc.nextLine();
+
+		System.out.println("Enter last name:\n");
+		String lastName = sc.nextLine();
+
+		System.out.println("Enter a password:\n");
+		String password = sc.nextLine();
+
+		// create a student object
+		Student stu = new Student(password, firstName, lastName);
+
+		// put student in list of students
+		studentList.add(stu);
+
+	}
+
+	private void adminBlock() throws Exception {
 		System.out.println("You are in the admin block");
 		// admin stuff goes here
 
@@ -152,11 +177,35 @@ public class University {
 				System.out.println("Delete course:\td");
 				System.out.println("Edit course:\te");
 				System.out.println("Display course:\tc");
+				System.out.println("Create student:\ts");
 				System.out.println("Register student:\tr");
-				System.out.println("Reports: \tt");
+				System.out.println("Reports:\tt");
+				System.out.println("Quit:\tq");
 				Scanner sc = new Scanner(System.in);
 				choice = sc.next().charAt(0);
 				// choices will go here
+				switch (choice) {
+				case 'a':
+					throw new Exception("Not Implemented");
+					// break;
+				case 'd':
+					throw new Exception("Not Implemented");
+					// break;
+				case 'e':
+					throw new Exception("Not Implemented");
+					// break;
+				case 'c':
+					throw new Exception("Not Implemented");
+					// break;
+				case 'r':
+					registerStudent();
+					break;
+				case 't':
+					throw new Exception("Not Implemented");
+					// break;
+				default:
+					break;
+				}
 
 			}
 		} else {
@@ -241,7 +290,13 @@ public class University {
 
 		if (status.compareTo("admin") == 0) {
 			// go to admin block
-			ub.adminBlock();
+			// TODO --unshunt
+			try {
+				ub.adminBlock();
+			} catch (Exception e) {
+				System.out.println("Not implemented!");
+			}
+
 		} else if (status.compareTo("student") == 0) {
 			// go to student block
 			ub.studentBlock();
