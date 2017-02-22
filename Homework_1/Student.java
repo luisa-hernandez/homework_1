@@ -83,15 +83,4 @@ public class Student extends User implements Serializable {
 		courses.remove(courseIndex());
 	}
 
-	// public boolean equals(Student stu) {
-	// /*
-	// * return true if student has same first and last name
-	// */
-	// if (firstName.equals(stu.getFirstName()) &&
-	// lastName.equals(stu.getLastName())) {
-	// return true;
-	// }
-	// return false;
-	// }
-
 }

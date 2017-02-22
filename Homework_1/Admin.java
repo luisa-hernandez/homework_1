@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 
 public class Admin extends User {
 
@@ -42,6 +43,7 @@ public class Admin extends User {
 
 		// ask user to enter new course instructor
 		System.out.println("Enter course Instructor: ");
+		cs.nextLine();
 		String courseInstructor = cs.nextLine();
 
 		// ask user to enter new course section
@@ -50,6 +52,7 @@ public class Admin extends User {
 
 		// ask user to enter new course location
 		System.out.println("Enter course Location: ");
+		cs.nextLine();
 		String courseLocation = cs.nextLine();
 
 		// create new objects of class Course
@@ -154,7 +157,6 @@ public class Admin extends User {
 
 			default:
 				System.out.println("invalid choice");
-				break;
 			}
 
 		}
@@ -231,7 +233,8 @@ public class Admin extends User {
 			System.out.println("The course ID is: " + courses.get(i).Course_Id);
 			System.out.println("The number of students in the course is:  " + courses.get(i).Current_Students);
 			System.out.println("The maximum number of students that can be enrolled in this class is: "
-					+ courses.get(i).Maximum_Students);
+					+ courses.get(i).Maximum_Students + "\n");
+
 		}
 	}
 
@@ -334,15 +337,16 @@ public class Admin extends User {
 			System.out.println("Write to a file of full courses:\tw ");
 			System.out.println("View students in course:\ts ");
 			System.out.println("View student courses:\tc ");
-			System.out.println("Sorted courses:\ta ");
+			System.out.println("Sort courses:\ta ");
+			System.out.println("Quit:\t\tq");
 			Scanner sc = new Scanner(System.in);
 			choice = sc.next().charAt(0);
 			switch (choice) {
 			case 'a':
-				// sortCourses();
-				// break;
+				sortCourses();
+				break;
 			case 'c':
-				studentCourses();
+				viewStudentCourses();
 				break;
 			case 'f':
 				viewFullCourses();
@@ -356,21 +360,25 @@ public class Admin extends User {
 			case 'w':
 				writeFullCourses();
 				break;
+			case 'q':
+				return;
 			default:
 				System.out.println("invalid choice");
-				break;
 			}
 		}
-		throw new Exception("reports not done");
 	}
 
-	private void studentCourses() {
+	private void sortCourses() {
+		Collections.sort(courses);
+	}
+
+	private void viewStudentCourses() {
 		/**
 		 * view a students courses
 		 */
 		Student stu = getStudent();
 		if (stu != null) {
-			getStudent().printCourses();
+			stu.printCourses();
 		}
 	}
 

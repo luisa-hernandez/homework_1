@@ -170,7 +170,7 @@ public class University {
 				char choice = 'a';
 				while (choice != 'q') {
 					System.out.println("Manage Courses:\tm");
-					System.out.println("Reports:\t\tr");
+					System.out.println("Reports:\tr");
 					System.out.println("Quit:\t\tq");
 
 					Scanner sc = new Scanner(System.in);
@@ -186,7 +186,6 @@ public class University {
 						return;
 					default:
 						System.out.println("invalid choice");
-						break;
 					}
 
 				}

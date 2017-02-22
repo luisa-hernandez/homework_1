@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Course implements Serializable {
+public class Course implements Comparable, Serializable {
 	// initializing variables
 	public String Course_Name;
 	public String Course_Id;
@@ -17,7 +17,6 @@ public class Course implements Serializable {
 
 	public boolean compareTo(Course c) {
 		return c.Current_Students < this.Current_Students;
-		// return c.Maximum_Students.compareTo(this.Maximum_Students);
 	}
 
 	public Course(String coursename, String courseid, int maximumstudents, int currentstudents, String courseinstructor,
@@ -29,7 +28,7 @@ public class Course implements Serializable {
 		this.Course_Instructor = courseinstructor;
 		this.Course_Section_Number = coursesectionnumber;
 		this.Course_Location = courselocation;
-		
+
 		this.students = new ArrayList<Student>();
 	}
 
@@ -53,6 +52,12 @@ public class Course implements Serializable {
 		System.out.println("Course Instructor: " + Course_Instructor);
 		System.out.println("Course Section Number: " + Course_Section_Number);
 		System.out.println("Course Location: " + Course_Location);
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
