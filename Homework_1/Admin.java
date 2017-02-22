@@ -442,7 +442,8 @@ public class Admin extends User {
 				System.out.println("invalid choice");
 				break;
 			}
-
+			//save after every action
+			save();
 		}
 	}
 
