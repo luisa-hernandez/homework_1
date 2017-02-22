@@ -89,7 +89,7 @@ public class Admin extends User {
 
 	// edit a course method
 	public void editCourse() {
-		int index = findIndex();
+		int index = courseIndex();
 
 		// looping through the array list
 		if (index > -1) {
@@ -160,7 +160,7 @@ public class Admin extends User {
 		}
 	}
 
-	public int findIndex() {
+	public int courseIndex() {
 		/**
 		 * find index of course in courses ArrayList, or -1 if not found
 		 */
@@ -191,7 +191,7 @@ public class Admin extends User {
 		 * course information
 		 */
 
-		int index = findIndex();
+		int index = courseIndex();
 		if (index > -1) {
 			courses.get(index).printInfo();
 		}
@@ -234,19 +234,36 @@ public class Admin extends User {
 		}
 	}
 
-	// view all courses that are full method
-	public void viewFullCourses() {
+	public ArrayList<Course> getFullCourses() {
+		/**
+		 * returns list of full courses
+		 */
+
+		ArrayList<Course> full = new ArrayList<Course>();
+
 		// looping through the array list
-		for (int i = 0; i < courses.size(); i++) {
+		for (Course course : courses) {
 			// if the number of existing students matches max students, the
 			// course is full
-			if (courses.get(i).Current_Students == courses.get(i).Maximum_Students) {
-				System.out.println("The course " + courses.get(i).Course_Name + " is full.");
+			if (course.Current_Students == course.Maximum_Students) {
+				full.add(course);
 			}
 		}
+		return full;
 	}
 
-	public void writeCourses() {
+	public void viewFullCourses() {
+		/**
+		 * view all courses that are full method
+		 * 
+		 */
+		for (Course course : getFullCourses()) {
+			System.out.println("The course " + course.Course_Name + " is full.");
+		}
+
+	}
+
+	public void writeFullCourses() {
 		BufferedWriter myFile;
 		try {
 			// write to a new file with the same path
@@ -266,17 +283,16 @@ public class Admin extends User {
 	}
 
 	public void registeredStudents() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the course ID: ");
-		String courseId = sc.nextLine();
-		// looping through the array list
-		for (int i = 0; i < courses.size(); i++) {
-			if (courseId == courses.get(i).Course_Id) {
-				// for(int j=0; i< courses.get(i).List_Of_Names.size(); j++){
-				// System.out.println(courses.get(i).List_Of_Names.get(j));
-				// }
-			}
+		/**
+		 * print registered students' names
+		 */
+		int index = courseIndex();
+		Course course = courses.get(index);
+
+		for (Student stu : course.students) {
+			System.out.println(stu.getFirstName() + " " + stu.getLastName());
 		}
+		System.out.println("");
 	}
 
 	// public void studentCourses() {
@@ -296,7 +312,8 @@ public class Admin extends User {
 	// for(int j=0; i<courses.get(i).List_Of_Names.size(); j++){
 	// //if the first name and last name match up, display the course
 	// information
-	// if (firstName == courses.get(i).firstName && lastName ==courses.get(i).lastName){
+	// if (firstName == courses.get(i).firstName && lastName
+	// ==courses.get(i).lastName){
 	// System.out.println(courses.get(i).Course_Name);
 	// }
 	// }
@@ -333,7 +350,7 @@ public class Admin extends User {
 				viewCourses();
 				break;
 			case 'w':
-				writeCourses();
+				writeFullCourses();
 				break;
 			default:
 				System.out.println("invalid choice");
@@ -351,7 +368,6 @@ public class Admin extends User {
 			System.out.println("Edit course:\t\te");
 			System.out.println("Display course:\t\tc");
 			System.out.println("Register student:\tr");
-			System.out.println("Reports:\t\tt");
 			System.out.println("Quit:\t\tq");
 			Scanner sc = new Scanner(System.in);
 			choice = sc.next().charAt(0);
@@ -375,6 +391,8 @@ public class Admin extends User {
 			case 't':
 				reports();
 				break;
+			case 'q':
+				return;
 			default:
 				System.out.println("invalid choice");
 				break;
