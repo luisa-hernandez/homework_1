@@ -279,7 +279,7 @@ public class University {
 		University ub = new University();
 
 		in = new Scanner(System.in);
-		System.out.println("Speak ye, student or admin?");
+		System.out.println("Are you a student or admin?");
 		String status = in.nextLine();
 
 		if (status.compareTo("admin") == 0) {

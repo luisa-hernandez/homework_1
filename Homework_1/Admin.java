@@ -217,6 +217,7 @@ public class Admin extends User {
 
 		// create a student object
 		Student stu = new Student(password, firstName, lastName);
+		stu.setCourses(new ArrayList<Course>());
 
 		// put student in list of students
 		students.add(stu);
@@ -331,16 +332,18 @@ public class Admin extends User {
 			System.out.println("View all courses:\tv ");
 			System.out.println("View all FULL courses:\tf ");
 			System.out.println("Write to a file of full courses:\tw ");
-			System.out.println("View names of students being registered:\ts ");
-			System.out.println("View courses that student is registered in:\tc ");
-			System.out.println("View sorted courses:\ta ");
+			System.out.println("View students in course:\ts ");
+			System.out.println("View student courses:\tc ");
+			System.out.println("Sorted courses:\ta ");
 			Scanner sc = new Scanner(System.in);
 			choice = sc.next().charAt(0);
 			switch (choice) {
-			// case 'a': sortCourses(courseList);
-			// break;
-			// case 'c': studentCourses(courseList);
-			// break;
+			case 'a':
+				// sortCourses();
+				// break;
+			case 'c':
+				studentCourses();
+				break;
 			case 'f':
 				viewFullCourses();
 				break;
@@ -359,6 +362,33 @@ public class Admin extends User {
 			}
 		}
 		throw new Exception("reports not done");
+	}
+
+	private void studentCourses() {
+		/**
+		 * view a students courses
+		 */
+		Student stu = getStudent();
+		if (stu != null) {
+			getStudent().printCourses();
+		}
+	}
+
+	private Student getStudent() {
+		Scanner sc = new Scanner(System.in);
+		// first name
+		System.out.println("First name:");
+		String firstName = sc.nextLine();
+		// last name
+		System.out.println("Last name:");
+		String lastName = sc.nextLine();
+
+		for (Student stu : students) {
+			if (firstName.equals(stu.getFirstName()) && lastName.equals(stu.getLastName())) {
+				return stu;
+			}
+		}
+		return null;
 	}
 
 	public void manageCourses() throws Exception {
