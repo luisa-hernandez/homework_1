@@ -51,7 +51,6 @@ public class University {
 			// read from csv file (first run)
 			createCoursesFromFile();
 		}
-
 	}
 
 	private void createCoursesFromFile() {
