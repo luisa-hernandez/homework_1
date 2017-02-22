@@ -127,7 +127,11 @@ public class University {
 
 			// sign in
 			if (stu.login(username, password)) {
-				stu.mainMenu();
+				try {
+					stu.mainMenu();
+				} catch (Exception e) {
+					// TODO -- delete try-catch after all steps implemented
+				}
 			} else {
 				System.out.println("invalid login");
 			}

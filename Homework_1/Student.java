@@ -30,35 +30,46 @@ public class Student extends User implements Serializable {
 
 	}
 
-	public void mainMenu() {
+	public void mainMenu() throws Exception {
 		/**
 		 * administer a student
 		 */
 
-		// if the username and password are correct, follow through with
-		// TODO --revisit
-		// see if user is a valid user:
-
-		// Student stud = getStudent(username);
-		// if (!(stud != null && stud.login(username, password))){
-		// System.out.println("Not a valid student!");
-		// return;
-		// }
-		// these options
-		if (false) {
-			char choice = 'a';
-			// create Student object
-			// Student student = new Student();
+		// choices
+		char choice = 'a';
+		while (choice != 'q') {
 			while (choice != 'q') {
 				System.out.println("View all courses available:\tv ");
 				System.out.println("View all courses that are not full:\tf ");
 				System.out.println("Register in a course:\tr");
 				System.out.println("Withdraw from a course:\tw");
 				System.out.println("View all courses you are enrolled in:\te");
-				// create a new scanner
+				System.out.println("Quite:\tq");
+
+				// get choice
 				Scanner sc = new Scanner(System.in);
 				choice = sc.next().charAt(0);
-				// choices will go here
+
+				switch (choice) {
+				case 'v':
+					throw new Exception("Not Implemented");
+					//break
+				case 'f':
+					throw new Exception("Not Implemented");
+					//break
+				case 'r':
+					throw new Exception("Not Implemented");
+					//break
+				case 'w':
+					throw new Exception("Not Implemented");
+					//break
+				case 'e':
+					throw new Exception("Not Implemented");
+					//break
+				default:
+					System.out.println("Invalid Choice");
+					break;
+				}
 			}
 		}
 	}
