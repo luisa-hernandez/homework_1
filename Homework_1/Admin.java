@@ -264,18 +264,19 @@ public class Admin extends User {
 	}
 
 	public void writeFullCourses() {
-		BufferedWriter myFile;
+		/**
+		 * write list of full courses
+		 */
+		BufferedWriter file;
 		try {
-			// write to a new file with the same path
-			myFile = new BufferedWriter(new FileWriter("/Users/LuisaHernandez/Documents/FullMyUniversityCourses/cvs"));
+
+			// FileWriter("/Users/LuisaHernandez/Documents/FullMyUniversityCourses/full_courses.ser"));
+			file = new BufferedWriter(new FileWriter("/Users/Zorro/arena/full_courses.txt"));
 			// looping through the array list
-			for (int i = 0; i < courses.size(); i++) {
-				// if the number of existing students matches max students, the
-				// course is full & then write to new file
-				if (courses.get(i).Current_Students == courses.get(i).Maximum_Students) {
-					myFile.write(courses.get(i).Course_Name + courses.get(i).Course_Id);
-				}
+			for (Course course : getFullCourses()) {
+				file.write(course.Course_Name + " " + course.Course_Id + "\n");
 			}
+			file.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
