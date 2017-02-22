@@ -166,7 +166,13 @@ public class University {
 		String password = type.nextLine();
 
 		if (admin.login(username, password)) {
-			admin.manageCourses();
+			//TODO change to menu, remove try-catch
+			try {
+				admin.manageCourses();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else {
 			System.out.println("Incorrect login.  Notifying the authorities.");
 		}

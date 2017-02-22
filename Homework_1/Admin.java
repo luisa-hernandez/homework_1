@@ -224,39 +224,39 @@ public class Admin extends User {
 	}
 
 	// view all courses method
-	public void viewCourses(ArrayList<Course> cl) {
-		for (int i = 0; i < cl.size(); i++) {
-			System.out.println("The course name is: " + cl.get(i).Course_Name);
-			System.out.println("The course ID is: " + cl.get(i).Course_Id);
-			System.out.println("The number of students in the course is:  " + cl.get(i).Current_Students);
+	public void viewCourses() {
+		for (int i = 0; i < courses.size(); i++) {
+			System.out.println("The course name is: " + courses.get(i).Course_Name);
+			System.out.println("The course ID is: " + courses.get(i).Course_Id);
+			System.out.println("The number of students in the course is:  " + courses.get(i).Current_Students);
 			System.out.println("The maximum number of students that can be enrolled in this class is: "
-					+ cl.get(i).Maximum_Students);
+					+ courses.get(i).Maximum_Students);
 		}
 	}
 
 	// view all courses that are full method
-	public void viewFullCourses(ArrayList<Course> cl) {
+	public void viewFullCourses() {
 		// looping through the array list
-		for (int i = 0; i < cl.size(); i++) {
+		for (int i = 0; i < courses.size(); i++) {
 			// if the number of existing students matches max students, the
 			// course is full
-			if (cl.get(i).Current_Students == cl.get(i).Maximum_Students) {
-				System.out.println("The course " + cl.get(i).Course_Name + " is full.");
+			if (courses.get(i).Current_Students == courses.get(i).Maximum_Students) {
+				System.out.println("The course " + courses.get(i).Course_Name + " is full.");
 			}
 		}
 	}
 
-	public void writeCourses(ArrayList<Course> cl) {
+	public void writeCourses() {
 		BufferedWriter myFile;
 		try {
 			// write to a new file with the same path
 			myFile = new BufferedWriter(new FileWriter("/Users/LuisaHernandez/Documents/FullMyUniversityCourses/cvs"));
 			// looping through the array list
-			for (int i = 0; i < cl.size(); i++) {
+			for (int i = 0; i < courses.size(); i++) {
 				// if the number of existing students matches max students, the
 				// course is full & then write to new file
-				if (cl.get(i).Current_Students == cl.get(i).Maximum_Students) {
-					myFile.write(cl.get(i).Course_Name + cl.get(i).Course_Id);
+				if (courses.get(i).Current_Students == courses.get(i).Maximum_Students) {
+					myFile.write(courses.get(i).Course_Name + courses.get(i).Course_Id);
 				}
 			}
 		} catch (IOException e) {
@@ -265,21 +265,21 @@ public class Admin extends User {
 		}
 	}
 
-	public void registeredStudents(ArrayList<Course> cl) {
+	public void registeredStudents() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the course ID: ");
 		String courseId = sc.nextLine();
 		// looping through the array list
-		for (int i = 0; i < cl.size(); i++) {
-			if (courseId == cl.get(i).Course_Id) {
-				// for(int j=0; i< cl.get(i).List_Of_Names.size(); j++){
-				// System.out.println(cl.get(i).List_Of_Names.get(j));
+		for (int i = 0; i < courses.size(); i++) {
+			if (courseId == courses.get(i).Course_Id) {
+				// for(int j=0; i< courses.get(i).List_Of_Names.size(); j++){
+				// System.out.println(courses.get(i).List_Of_Names.get(j));
 				// }
 			}
 		}
 	}
 
-	// public void studentCourses(ArrayList<Course> cl) {
+	// public void studentCourses() {
 	// Scanner sc= new Scanner(System.in);
 	// //ask the user to enter a student's first name
 	// System.out.println("Enter student's first name: ");
@@ -292,12 +292,12 @@ public class Admin extends User {
 	//
 	// //looping through the array list
 	// System.out.println("The following are courses that a student is in: ");
-	// for(int i=0; i<cl.size(); i++){
-	// for(int j=0; i<cl.get(i).List_Of_Names.size(); j++){
+	// for(int i=0; i<courses.size(); i++){
+	// for(int j=0; i<courses.get(i).List_Of_Names.size(); j++){
 	// //if the first name and last name match up, display the course
 	// information
-	// if (firstName == cl.get(i).firstName && lastName ==cl.get(i).lastName){
-	// System.out.println(cl.get(i).Course_Name);
+	// if (firstName == courses.get(i).firstName && lastName ==courses.get(i).lastName){
+	// System.out.println(courses.get(i).Course_Name);
 	// }
 	// }
 	// }
@@ -334,6 +334,9 @@ public class Admin extends User {
 				break;
 			case 'w':
 				writeCourses();
+				break;
+			default:
+				System.out.println("invalid choice");
 				break;
 			}
 		}
