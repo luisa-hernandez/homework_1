@@ -307,8 +307,7 @@ public class Admin extends User {
 	// Collections.sort(courseList);
 	// }
 
-	
-	public void reports(ArrayList<Course> courseList) {
+	public void reports() throws Exception {
 		char choice = 'a';
 		while (choice != 'q') {
 			System.out.println("View all courses:\tv ");
@@ -325,19 +324,20 @@ public class Admin extends User {
 			// case 'c': studentCourses(courseList);
 			// break;
 			case 'f':
-				viewFullCourses(courseList);
+				viewFullCourses();
 				break;
 			case 's':
-				registeredStudents(courseList);
+				registeredStudents();
 				break;
 			case 'v':
-				viewCourses(courseList);
+				viewCourses();
 				break;
 			case 'w':
-				writeCourses(courseList);
+				writeCourses();
 				break;
 			}
 		}
+		throw new Exception("reports not done");
 	}
 
 	public void manageCourses() throws Exception {
@@ -362,17 +362,18 @@ public class Admin extends User {
 				break;
 			case 'e':
 				editCourse();
-				 break;
+				break;
 			case 'c':
-				displayCourse();;
+				displayCourse();
 				break;
 			case 'r':
 				registerStudent();
 				break;
 			case 't':
-				throw new Exception("Not Implemented");
-				// break;
+				reports();
+				break;
 			default:
+				System.out.println("invalid choice");
 				break;
 			}
 
