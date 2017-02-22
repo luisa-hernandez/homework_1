@@ -189,7 +189,6 @@ public class University {
 						break;
 					}
 
-					admin.manageCourses();
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

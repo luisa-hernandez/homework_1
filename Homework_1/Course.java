@@ -10,8 +10,6 @@ public class Course implements Serializable {
 	public String Course_Id;
 	public int Maximum_Students;
 	public int Current_Students;
-	// TODO maybe dn't need, were using it for registering students
-	// public ArrayList<String> List_Of_Names;
 	public String Course_Instructor;
 	public int Course_Section_Number;
 	public String Course_Location;
@@ -28,11 +26,11 @@ public class Course implements Serializable {
 		this.Course_Id = courseid;
 		this.Maximum_Students = maximumstudents;
 		this.Current_Students = currentstudents;
-		// TODO maybe delete
-		// this.List_Of_Names = listofnames;
 		this.Course_Instructor = courseinstructor;
 		this.Course_Section_Number = coursesectionnumber;
 		this.Course_Location = courselocation;
+		
+		this.students = new ArrayList<Student>();
 	}
 
 	public String getId() {
