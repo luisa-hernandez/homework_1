@@ -373,7 +373,7 @@ public class Admin extends User {
 		}
 	}
 
-	private Student getStudent() {
+	public Student getStudent() {
 		Scanner sc = new Scanner(System.in);
 		// first name
 		System.out.println("First name:");

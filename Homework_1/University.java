@@ -18,7 +18,7 @@ public class University {
 	ArrayList<Course> courses;
 	Admin admin;
 	ArrayList<Student> students;
-	private static Scanner in;
+	private static Scanner input;
 
 	public University() {
 		// create course and student lists
@@ -29,6 +29,7 @@ public class University {
 		loadStudents();
 
 		admin = new Admin("Admin", "Admin001", students, courses);
+		input = new Scanner(System.in);
 	}
 
 	private void loadStudents() {
@@ -81,11 +82,8 @@ public class University {
 		// ("/Users/LuisaHernandez/Documents/MyUniversityCourses.csv");
 		File myFile = new File("/Users/Zorro/arena/MyUniversityCourses.csv");
 
-		// creating scanner
-		Scanner input;
 		// ArrayList<Course> courseList = null;
 		try {
-			input = new Scanner(myFile);
 			// creating new array
 			// courseList = new ArrayList<Course>();
 			// this should skip first horizontal line of document
@@ -116,42 +114,29 @@ public class University {
 		admin.mainMenu();
 	}
 
-	private void studentMenu() {
-		// student stuff goes here
-		System.out.println("You are in the student block");
+	private void studentMainMenu() {
+		/**
+		 * call main menu of student
+		 */
 
-		// sign in
-		// require student to type in a username and password
-		Scanner type = new Scanner(System.in);
-		System.out.println("Username: ");
-		String username = type.nextLine();
-		System.out.println("Password: ");
-		String password = type.nextLine();
-		// if the username and password are correct, follow through with
-		// TODO --revisit
-		// see if user is a valid user:
+		// get student from admin
+		Student stu = admin.getStudent();
 
-		// Student stud = getStudent(username);
-		// if (!(stud != null && stud.login(username, password))){
-		// System.out.println("Not a valid student!");
-		// return;
-		// }
-		// these options
-		if (false) {
-			char choice = 'a';
-			// create Student object
-			// Student student = new Student();
-			while (choice != 'q') {
-				System.out.println("View all courses available:\tv ");
-				System.out.println("View all courses that are not full:\tf ");
-				System.out.println("Register in a course:\tr");
-				System.out.println("Withdraw from a course:\tw");
-				System.out.println("View all courses you are enrolled in:\te");
-				// create a new scanner
-				Scanner sc = new Scanner(System.in);
-				choice = sc.next().charAt(0);
-				// choices will go here
+		if (stu != null) {
+			// sign in
+
+			System.out.println("Username (first+last name, no spaces): ");
+			String username = input.nextLine();
+			System.out.println("Password: ");
+			String password = input.nextLine();
+
+			if (stu.login(username, password)) {
+				stu.mainMenu();
+			} else {
+				System.out.println("invalid login");
 			}
+		} else {
+			System.out.println("invalid student");
 		}
 	}
 
@@ -163,7 +148,6 @@ public class University {
 		// do all our stuff here
 		University ub = new University();
 
-		in = new Scanner(System.in);
 		System.out.println("Choices:");
 		System.out.println("admin: manage courses and view reports");
 		System.out.println("student: view student info and register for courses");
@@ -171,7 +155,7 @@ public class University {
 
 		char choice = 'a';
 		while (choice != 'q') {
-			choice = in.next().charAt(0);
+			choice = input.next().charAt(0);
 			if (choice == 'a') {
 				// go to admin block
 				// TODO --unshunt
@@ -183,7 +167,7 @@ public class University {
 
 			} else if (choice == 's') {
 				// go to student block
-				ub.studentMenu();
+				ub.studentMainMenu();
 			} else if (choice != 'q') {
 				System.out.println("invalid choice");
 			}
