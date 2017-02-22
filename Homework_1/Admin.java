@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.Collections;
+import java.util.InputMismatchException;
 import java.util.List;
 
 public class Admin extends User {
@@ -67,10 +68,10 @@ public class Admin extends User {
 
 	// delete a course method
 	public void deleteCourse() {
-		// create scanner
-		Scanner sc = new Scanner(System.in);
-
-		int index = findCourse();
+		/**
+		 * delete a course
+		 */
+		int index = findCourseIndex();
 
 		if (index > -1) {
 			// unregister students
@@ -85,7 +86,7 @@ public class Admin extends User {
 
 	// edit a course method
 	public void editCourse() {
-		int index = findCourse();
+		int index = findCourseIndex();
 
 		// looping through the array list
 		if (index > -1) {
@@ -157,25 +158,40 @@ public class Admin extends User {
 		}
 	}
 
-	public int findCourse() {
+	public int findCourseIndex() {
 		/**
 		 * find index of course in courses ArrayList, or -1 if not found
 		 */
-		Scanner sc = new Scanner(System.in);
-		// asking admin to enter course ID
-		System.out.println("Enter course ID: ");
-		String id = sc.nextLine();
-
-		// asking admin to enter course name
-		System.out.println("Enter course section number: ");
-		int section = sc.nextInt();
-
 		int index = -1;
-		for (int x = 0; x < courses.size(); x++) {
-			// find index of matching course, if it exists
-			Course course = courses.get(x);
-			if (section == course.getSection() && id.compareTo(course.getId()) == 0) {
-				index = x;
+
+		String courseId;
+		int courseSection;
+		boolean validInput = false;
+
+		while (!validInput) {
+			try {
+
+				Scanner sc = new Scanner(System.in);
+				// asking admin to enter course ID
+				System.out.println("Enter course ID: (string) ");
+				courseId = sc.nextLine();
+
+				// asking admin to enter course name
+				System.out.println("Enter course section number: (int) ");
+				courseSection = sc.nextInt();
+
+				validInput = true;
+
+				// get course index
+				for (int x = 0; x < courses.size(); x++) {
+					// find index of matching course, if it exists
+					Course course = courses.get(x);
+					if (courseSection == course.getSection() && courseId.compareTo(course.getId()) == 0) {
+						index = x;
+					}
+				}
+			} catch (InputMismatchException im) {
+				System.out.println("invalid choice");
 			}
 		}
 
@@ -188,7 +204,7 @@ public class Admin extends User {
 		 * course information
 		 */
 
-		int index = findCourse();
+		int index = findCourseIndex();
 		if (index > -1) {
 			courses.get(index).printInfo();
 		} else {
@@ -288,13 +304,16 @@ public class Admin extends User {
 		/**
 		 * print registered students' names
 		 */
-		int index = findCourse();
-		Course course = courses.get(index);
+		int index = findCourseIndex();
 
-		for (Student stu : course.students) {
-			System.out.println(stu.getFirstName() + " " + stu.getLastName());
+		if (index > -1) {
+			Course course = courses.get(index);
+
+			for (Student stu : course.students) {
+				System.out.println(stu.getFirstName() + " " + stu.getLastName());
+			}
+			System.out.println("");
 		}
-		System.out.println("");
 	}
 
 	// public void studentCourses() {
@@ -332,8 +351,8 @@ public class Admin extends User {
 			System.out.println("View all courses:\tv ");
 			System.out.println("View all FULL courses:\tf ");
 			System.out.println("Write to a file of full courses:\tw ");
-			System.out.println("View students in course:\ts ");
-			System.out.println("View student courses:\tc ");
+			System.out.println("View course's students:\ts ");
+			System.out.println("View student's courses:\tc ");
 			System.out.println("Sort courses:\ta ");
 			System.out.println("Quit:\t\tq");
 			Scanner sc = new Scanner(System.in);
