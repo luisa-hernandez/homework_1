@@ -274,9 +274,11 @@ public class Admin extends User {
 		 * view all courses that are full method
 		 * 
 		 */
+		System.out.println("");
 		for (Course course : getFullCourses()) {
-			System.out.println("The course " + course.Course_Name + " is full.");
+			System.out.println(course.Course_Name + ", section " + course.Course_Section_Number + " is full.");
 		}
+		System.out.println("");
 
 	}
 
@@ -291,7 +293,8 @@ public class Admin extends User {
 			file = new BufferedWriter(new FileWriter("/Users/Zorro/arena/full_courses.txt"));
 			// looping through the array list
 			for (Course course : getFullCourses()) {
-				file.write(course.Course_Name + " " + course.Course_Id + "\n");
+				file.write(course.Course_Name + ", id: " + course.Course_Id + ", section: "
+						+ course.Course_Section_Number + "\n");
 			}
 			file.close();
 		} catch (IOException e) {
@@ -315,35 +318,6 @@ public class Admin extends User {
 			System.out.println("");
 		}
 	}
-
-	// public void studentCourses() {
-	// Scanner sc= new Scanner(System.in);
-	// //ask the user to enter a student's first name
-	// System.out.println("Enter student's first name: ");
-	// String firstName = sc.nextLine();
-	//
-	// Scanner s_c= new Scanner(System.in);
-	// //ask the user to enter a student's last name
-	// System.out.println("Enter student's last name: ");
-	// String lastName = s_c.nextLine();
-	//
-	// //looping through the array list
-	// System.out.println("The following are courses that a student is in: ");
-	// for(int i=0; i<courses.size(); i++){
-	// for(int j=0; i<courses.get(i).List_Of_Names.size(); j++){
-	// //if the first name and last name match up, display the course
-	// information
-	// if (firstName == courses.get(i).firstName && lastName
-	// ==courses.get(i).lastName){
-	// System.out.println(courses.get(i).Course_Name);
-	// }
-	// }
-	// }
-	// }
-
-	// public void sortCourses(ArrayList<Course> courseList){
-	// Collections.sort(courseList);
-	// }
 
 	public void reports() throws Exception {
 		char choice = 'a';

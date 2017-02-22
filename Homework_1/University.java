@@ -205,25 +205,31 @@ public class University {
 		University ub = new University();
 
 		in = new Scanner(System.in);
-		System.out.println("Are you a student or admin?");
-		String status = in.nextLine();
+		System.out.println("Choices:");
+		System.out.println("admin: manage courses and view reports");
+		System.out.println("student: view student info and register for courses");
+		System.out.println("q: quit");
 
-		if (status.compareTo("admin") == 0) {
-			// go to admin block
-			// TODO --unshunt
-			try {
-				ub.adminBlock();
-			} catch (Exception e) {
-				System.out.println("Not implemented!");
+		char choice = 'a';
+		while (choice != 'q') {
+			choice = in.next().charAt(0);
+			if (choice == 'a') {
+				// go to admin block
+				// TODO --unshunt
+				try {
+					ub.adminBlock();
+				} catch (Exception e) {
+					System.out.println("Not implemented!");
+				}
+
+			} else if (choice == 's') {
+				// go to student block
+				ub.studentBlock();
+			} else if (choice != 'q') {
+				System.out.println("invalid choice");
 			}
-
-		} else if (status.compareTo("student") == 0) {
-			// go to student block
-			ub.studentBlock();
-		} else {
-			System.out.println("You must enter admin or student.");
+			ub.save();
 		}
-		ub.save();
 
 	}
 
