@@ -371,6 +371,7 @@ public class Admin extends User {
 			default:
 				System.out.println("invalid choice");
 			}
+			save();
 		}
 	}
 
@@ -442,7 +443,7 @@ public class Admin extends User {
 				System.out.println("invalid choice");
 				break;
 			}
-			//save after every action
+			// save after every action
 			save();
 		}
 	}
