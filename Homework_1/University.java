@@ -111,6 +111,7 @@ public class University {
 	}
 
 	private void studentMainMenu() {
+		//TODO -- move to student
 		/**
 		 * call main menu of student
 		 */
@@ -163,6 +164,7 @@ public class University {
 					ub.adminMainMenu();
 				} catch (Exception e) {
 					System.out.println("Not implemented!");
+					System.out.print(e.getStackTrace());
 				}
 
 			} else if (choice == 's') {

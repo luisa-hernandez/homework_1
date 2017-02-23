@@ -16,7 +16,7 @@ import java.util.List;
 public class Admin extends User {
 
 	ArrayList<Student> students;
-	
+
 	// create a constructor
 	public Admin(String username, String password, ArrayList<Student> students, ArrayList<Course> courses) {
 		super(username, password, courses);
