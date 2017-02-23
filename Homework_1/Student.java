@@ -59,8 +59,8 @@ public class Student extends User implements Serializable {
 					viewOpenCourses();
 					break;
 				case 'r':
-					throw new Exception("Not Implemented");
-					// break
+					register();
+					break;
 				case 'w':
 					withdraw();
 					break;
@@ -77,12 +77,39 @@ public class Student extends User implements Serializable {
 		}
 	}
 
+	private void register() {
+		/**
+		 * register for a course
+		 */
+		int index = -1;
+		for (int i = 0; i < allCourses.size(); i++) {
+			Course course = allCourses.get(i);
+			// only show open courses
+			if (course.Maximum_Students > course.students.size()) {
+				System.out.println(i + ": " + course.Course_Name + " " + course.Course_Section_Number);
+			}
+		}
+
+		System.out.println("Enter number to register or -1 for NONE.");
+		Scanner in = new Scanner(System.in);
+		try {
+			index = in.nextInt();
+		} catch (Exception e) {
+			// don't register for any
+		}
+
+		if (index > -1 && index < allCourses.size()) {
+			// add course to courses
+			myCourses.add(allCourses.get(index));
+		}
+	}
+
 	private void viewOpenCourses() {
 		/**
 		 * show open courses
 		 */
-		for(Course course: allCourses){
-			if(course.students.size() < course.Maximum_Students){
+		for (Course course : allCourses) {
+			if (course.students.size() < course.Maximum_Students) {
 				course.printInfo();
 			}
 		}
