@@ -56,8 +56,8 @@ public class Student extends User implements Serializable {
 					viewCourses();
 					break;
 				case 'f':
-					throw new Exception("Not Implemented");
-					// break
+					viewOpenCourses();
+					break;
 				case 'r':
 					throw new Exception("Not Implemented");
 					// break
@@ -77,15 +77,27 @@ public class Student extends User implements Serializable {
 		}
 	}
 
+	private void viewOpenCourses() {
+		/**
+		 * show open courses
+		 */
+		for(Course course: allCourses){
+			if(course.students.size() < course.Maximum_Students){
+				course.printInfo();
+			}
+		}
+
+	}
+
+	public boolean add(Course e) {
+		return myCourses.add(e);
+	}
+
 	public Student(String password, String firstName, String lastName, ArrayList<Course> courses) {
 		super(new String(firstName + lastName), password, courses);
 		this.firstName = firstName;
 		this.lastName = lastName;
 		myCourses = new ArrayList<Course>();
-	}
-
-	public boolean add(Course e) {
-		return myCourses.add(e);
 	}
 
 	public Course remove(int index) {
