@@ -8,7 +8,7 @@ public class Student extends User implements Serializable {
 
 	private String firstName;
 	private String lastName;
-	private ArrayList<Course> allCourses;
+	private ArrayList<Course> courses;
 	private ArrayList<Course> myCourses;
 
 	public String getFirstName() {
@@ -45,7 +45,7 @@ public class Student extends User implements Serializable {
 				System.out.println("Register in a course:\tr");
 				System.out.println("Withdraw from a course:\tw");
 				System.out.println("View all courses you are enrolled in:\te");
-				System.out.println("Quite:\tq");
+				System.out.println("Quit to Save:\tq");
 
 				// get choice
 				Scanner sc = new Scanner(System.in);
@@ -72,8 +72,6 @@ public class Student extends User implements Serializable {
 					break;
 				}
 			}
-			// TODO -- save!
-			throw new Exception("you didn't save!");
 		}
 	}
 
@@ -82,8 +80,8 @@ public class Student extends User implements Serializable {
 		 * register for a course
 		 */
 		int index = -1;
-		for (int i = 0; i < allCourses.size(); i++) {
-			Course course = allCourses.get(i);
+		for (int i = 0; i < courses.size(); i++) {
+			Course course = courses.get(i);
 			// only show open courses
 			if (course.Maximum_Students > course.students.size()) {
 				System.out.println(i + ": " + course.Course_Name + " " + course.Course_Section_Number);
@@ -98,9 +96,9 @@ public class Student extends User implements Serializable {
 			// don't register for any
 		}
 
-		if (index > -1 && index < allCourses.size()) {
+		if (index > -1 && index < courses.size()) {
 			// add course to courses
-			myCourses.add(allCourses.get(index));
+			myCourses.add(courses.get(index));
 		}
 	}
 
@@ -108,7 +106,7 @@ public class Student extends User implements Serializable {
 		/**
 		 * show open courses
 		 */
-		for (Course course : allCourses) {
+		for (Course course : courses) {
 			if (course.students.size() < course.Maximum_Students) {
 				course.printInfo();
 			}
@@ -132,18 +130,18 @@ public class Student extends User implements Serializable {
 	}
 
 	public void printCourses() {
-		for (Course course : allCourses) {
+		for (Course course : courses) {
 			System.out.println(course.Course_Name + " " + course.Course_Section_Number);
 		}
 
 	}
 
 	public void setCourses(ArrayList<Course> courses) {
-		this.allCourses = courses;
+		this.courses = courses;
 	}
 
 	public void addCourse(Course course) {
-		allCourses.add(course);
+		courses.add(course);
 	}
 
 	public int courseIndex() {
@@ -160,9 +158,9 @@ public class Student extends User implements Serializable {
 		int section = sc.nextInt();
 
 		int index = -1;
-		for (int x = 0; x < allCourses.size(); x++) {
+		for (int x = 0; x < courses.size(); x++) {
 			// find index of matching course, if it exists
-			Course course = allCourses.get(x);
+			Course course = courses.get(x);
 			if (section == course.getSection() && id.compareTo(course.getId()) == 0) {
 				index = x;
 			}
