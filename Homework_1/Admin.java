@@ -230,7 +230,7 @@ public class Admin extends User {
 
 		// create a student object
 		Student stu = new Student(password, firstName, lastName, courses);
-		
+
 		// put student in list of students
 		students.add(stu);
 
@@ -273,9 +273,8 @@ public class Admin extends User {
 		 */
 		BufferedWriter file;
 		try {
-
-			// FileWriter("/Users/LuisaHernandez/Documents/FullMyUniversityCourses/full_courses.ser"));
-			file = new BufferedWriter(new FileWriter("/Users/Zorro/arena/full_courses.txt"));
+			file = new BufferedWriter(
+					new FileWriter("/Users/LuisaHernandez/Documents/FullMyUniversityCourses/full_courses.ser"));
 			// looping through the array list
 			for (Course course : getFullCourses()) {
 				file.write(course.Course_Name + ", id: " + course.Course_Id + ", section: "
@@ -427,8 +426,7 @@ public class Admin extends User {
 		 * serialize the course list
 		 */
 
-		// File myFile = ("/Users/LuisaHernandez/Documents/courses.ser");
-		File myFile = new File("/Users/Zorro/arena/courses.ser");
+		File myFile = new File("/Users/LuisaHernandez/Documents/courses.ser");
 
 		// serialize course list
 		try {
@@ -448,8 +446,7 @@ public class Admin extends User {
 		 * serialize student list
 		 */
 
-		// File studFile = ("/Users/LuisaHernandez/Documents/studs.ser");
-		File studFile = new File("/Users/Zorro/arena/studs.ser");
+		File studFile = new File("/Users/LuisaHernandez/Documents/studs.ser");
 
 		// serialize student list
 		try {

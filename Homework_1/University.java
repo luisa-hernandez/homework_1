@@ -36,9 +36,8 @@ public class University {
 		/**
 		 * load students from a file
 		 */
-		// File studFile = ("/Users/LuisaHernandez/Documents/studs.ser");
-		File studFile = new File("/Users/Zorro/arena/studs.ser");
-
+		File studFile = new File("/Users/LuisaHernandez/Documents/studs.ser");
+		
 		try {
 			FileInputStream fileIn = new FileInputStream(studFile);
 			ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -57,8 +56,7 @@ public class University {
 		 * "MyUniversityCourses.ser"
 		 */
 
-		// ("/Users/LuisaHernandez/Documents/courses.ser");
-		File myFile = new File("/Users/Zorro/arena/courses.ser");
+		File myFile = new File("/Users/LuisaHernandez/Documents/courses.ser");
 
 		// try to load serialized courses
 		try {
@@ -78,9 +76,8 @@ public class University {
 		 * read courses csv file, create courses from it
 		 */
 		// path to find excel document
-		// File myFile = new File
-		// ("/Users/LuisaHernandez/Documents/MyUniversityCourses.csv");
-		File myFile = new File("/Users/Zorro/arena/MyUniversityCourses.csv");
+
+		File myFile = new File("/Users/LuisaHernandez/Documents/MyUniversityCourses.csv");
 
 		try {
 			Scanner fileInput = new Scanner(myFile);
@@ -95,11 +92,8 @@ public class University {
 						data[5], Integer.parseInt(data[6]), data[7]);
 				// adds data to courseList
 				courses.add(myCourse);
-
-				// this is for testing and printing out what is contained in
-				// myCourse
-				// myCourse.print();
 			}
+			fileInput.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -126,7 +120,6 @@ public class University {
 			System.out.println("Password: ");
 			input.nextLine();
 			String password = input.nextLine();
-			
 
 			// sign in
 			if (stu.login(username, password)) {

@@ -22,7 +22,7 @@ public class TestSerialization {
 		}
 		
 		try {
-			FileOutputStream fileOut = new FileOutputStream("/Users/Zorro/arena/jstrings");
+			FileOutputStream fileOut = new FileOutputStream("/Users/LuisaHernandez/Documents/jstrings");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(strings);
 			out.close();
@@ -33,7 +33,7 @@ public class TestSerialization {
 		
 		ArrayList<String> istrings;
 		try {
-	         FileInputStream fileIn = new FileInputStream("/Users/Zorro/arena/jstrings");
+	         FileInputStream fileIn = new FileInputStream("/Users/LuisaHernandez/Documents/jstrings");
 	         ObjectInputStream in = new ObjectInputStream(fileIn);
 	         istrings = (ArrayList<String>) in.readObject();
 	         in.close();
