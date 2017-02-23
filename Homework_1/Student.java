@@ -65,8 +65,8 @@ public class Student extends User implements Serializable {
 					withdraw();
 					break;
 				case 'e':
-					throw new Exception("Not Implemented");
-					// break
+					viewCourses();
+					break;
 				default:
 					System.out.println("Invalid Choice");
 					break;
@@ -131,19 +131,37 @@ public class Student extends User implements Serializable {
 		return index;
 	}
 
-	public void viewCourses(){
-		for(Course course: myCourses){
+	public void viewCourses() {
+		for (Course course : myCourses) {
 			System.out.println("Name:\t" + course.Course_Name);
 			System.out.println("ID:\t" + course.Course_Id);
 			System.out.println("Section:\t" + course.Course_Section_Number);
 			System.out.println("");
 		}
 	}
-	
-//	private void withdraw() {
-//		
-//		removeCourse(null);
-//	}
+
+	private void withdraw() {
+
+		int index = -1;
+		for (int i = 0; i < myCourses.size(); i++) {
+			Course course = myCourses.get(i);
+			System.out.println(i + ": " + course.Course_Name + " " + course.Course_Section_Number);
+		}
+
+		try {
+			// get int of course to remove
+			System.out.println("Enter number to remove or -1 for NONE:");
+			Scanner sc = new Scanner(System.in);
+			index = sc.nextInt();
+		} catch (Exception e) {
+			System.out.println("invalid input");
+		}
+
+		// remove course
+		if (index > -1 && index < myCourses.size()) {
+			myCourses.remove(index);
+		}
+	}
 
 	public void removeCourse(Course course) {
 		/**
