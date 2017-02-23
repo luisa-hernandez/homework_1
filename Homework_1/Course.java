@@ -55,15 +55,24 @@ public class Course implements Comparable, Serializable {
 	}
 
 	@Override
-	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		try {
-			throw new Exception("Not Implemented");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public int compareTo(Object oCourse) {
+		/**
+		 * compare number of students to see which is more full
+		 */
+		Course course = (Course) oCourse;
+		if (students.size() < course.students.size()) {
+			// fewer students
+			return -1;
+		} else if (students.size() > course.students.size()) {
+			// more students
+			return 1;
 		}
+		// equal number of students
 		return 0;
+	}
+
+	public boolean equals(Course c) {
+		return (c.Course_Id.equals(Course_Id) && c.Course_Section_Number == Course_Section_Number);
 	}
 
 }

@@ -8,7 +8,7 @@ public class Student extends User implements Serializable {
 
 	private String firstName;
 	private String lastName;
-	private ArrayList<Course> courses;
+	private ArrayList<Course> allCourses;
 	private ArrayList<Course> myCourses;
 
 	public String getFirstName() {
@@ -54,25 +54,25 @@ public class Student extends User implements Serializable {
 				switch (choice) {
 				case 'v':
 					throw new Exception("Not Implemented");
-					//break
+					// break
 				case 'f':
 					throw new Exception("Not Implemented");
-					//break
+					// break
 				case 'r':
 					throw new Exception("Not Implemented");
-					//break
+					// break
 				case 'w':
-					throw new Exception("Not Implemented");
-					//break
+					withdraw();
+					break;
 				case 'e':
 					throw new Exception("Not Implemented");
-					//break
+					// break
 				default:
 					System.out.println("Invalid Choice");
 					break;
 				}
 			}
-			//TODO -- save!
+			// TODO -- save!
 		}
 	}
 
@@ -83,19 +83,27 @@ public class Student extends User implements Serializable {
 		myCourses = new ArrayList<Course>();
 	}
 
+	public boolean add(Course e) {
+		return myCourses.add(e);
+	}
+
+	public Course remove(int index) {
+		return myCourses.remove(index);
+	}
+
 	public void printCourses() {
-		for (Course course : courses) {
+		for (Course course : allCourses) {
 			System.out.println(course.Course_Name + " " + course.Course_Section_Number);
 		}
 
 	}
 
 	public void setCourses(ArrayList<Course> courses) {
-		this.courses = courses;
+		this.allCourses = courses;
 	}
 
 	public void addCourse(Course course) {
-		courses.add(course);
+		allCourses.add(course);
 	}
 
 	public int courseIndex() {
@@ -112,9 +120,9 @@ public class Student extends User implements Serializable {
 		int section = sc.nextInt();
 
 		int index = -1;
-		for (int x = 0; x < courses.size(); x++) {
+		for (int x = 0; x < allCourses.size(); x++) {
 			// find index of matching course, if it exists
-			Course course = courses.get(x);
+			Course course = allCourses.get(x);
 			if (section == course.getSection() && id.compareTo(course.getId()) == 0) {
 				index = x;
 			}
@@ -123,11 +131,30 @@ public class Student extends User implements Serializable {
 		return index;
 	}
 
+	public void viewCourses(){
+		for(Course course: myCourses){
+			System.out.println("Name:\t" + course.Course_Name);
+			System.out.println("ID:\t" + course.Course_Id);
+			System.out.println("Section:\t" + course.Course_Section_Number);
+			System.out.println("");
+		}
+	}
+	
+//	private void withdraw() {
+//		
+//		removeCourse(null);
+//	}
+
 	public void removeCourse(Course course) {
 		/**
 		 * remove a course
 		 */
-		courses.remove(courseIndex());
+		for (int i = 0; i < myCourses.size(); i++) {
+			if (course.equals(myCourses.get(i))) {
+				myCourses.remove(i);
+				break;
+			}
+		}
 	}
 
 }
