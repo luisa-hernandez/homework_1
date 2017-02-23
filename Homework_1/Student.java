@@ -65,7 +65,7 @@ public class Student extends User implements Serializable {
 					withdraw();
 					break;
 				case 'e':
-					viewCourses();
+					viewMyCourses();
 					break;
 				case 'q':
 					break;
@@ -163,9 +163,9 @@ public class Student extends User implements Serializable {
 		return index;
 	}
 
-	public void viewCourses() {
-		for (int x = 0; x < courses.size(); x++) {
-			Course course = courses.get(x);
+	public void viewMyCourses() {
+		for (int x = 0; x < myCourses.size(); x++) {
+			Course course = myCourses.get(x);
 			System.out.println("Name:\t" + course.Course_Name);
 			System.out.println("ID:\t" + course.Course_Id);
 			System.out.println("Section:\t" + course.Course_Section_Number);
