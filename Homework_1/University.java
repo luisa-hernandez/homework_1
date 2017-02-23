@@ -111,7 +111,7 @@ public class University {
 	}
 
 	private void studentMainMenu() {
-		//TODO -- move to student
+		// TODO -- move to student
 		/**
 		 * call main menu of student
 		 */
@@ -124,7 +124,9 @@ public class University {
 			String username = stu.getFirstName() + stu.getLastName();
 
 			System.out.println("Password: ");
+			input.nextLine();
 			String password = input.nextLine();
+			
 
 			// sign in
 			if (stu.login(username, password)) {
@@ -149,13 +151,13 @@ public class University {
 		// do all our stuff here
 		University ub = new University();
 
-		System.out.println("Choices:");
-		System.out.println("admin: manage courses and view reports");
-		System.out.println("student: view student info and register for courses");
-		System.out.println("q: quit");
-
 		char choice = 'a';
 		while (choice != 'q') {
+			System.out.println("Choices:");
+			System.out.println("admin: manage courses and view reports");
+			System.out.println("student: view student info and register for courses");
+			System.out.println("q: quit");
+
 			choice = input.next().charAt(0);
 			if (choice == 'a') {
 				// go to admin block
