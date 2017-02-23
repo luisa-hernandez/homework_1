@@ -16,13 +16,11 @@ import java.util.List;
 public class Admin extends User {
 
 	ArrayList<Student> students;
-	ArrayList<Course> courses;
-
+	
 	// create a constructor
 	public Admin(String username, String password, ArrayList<Student> students, ArrayList<Course> courses) {
-		super(username, password);
+		super(username, password, courses);
 		this.students = students;
-		this.courses = courses;
 	}
 
 	// add a course method
@@ -231,24 +229,12 @@ public class Admin extends User {
 		String password = sc.nextLine();
 
 		// create a student object
-		Student stu = new Student(password, firstName, lastName);
+		Student stu = new Student(password, firstName, lastName, courses);
 		stu.setCourses(new ArrayList<Course>());
 
 		// put student in list of students
 		students.add(stu);
 
-	}
-
-	// view all courses method
-	public void viewCourses() {
-		for (int i = 0; i < courses.size(); i++) {
-			System.out.println("The course name is: " + courses.get(i).Course_Name);
-			System.out.println("The course ID is: " + courses.get(i).Course_Id);
-			System.out.println("The number of students in the course is:  " + courses.get(i).Current_Students);
-			System.out.println("The maximum number of students that can be enrolled in this class is: "
-					+ courses.get(i).Maximum_Students + "\n");
-
-		}
 	}
 
 	public ArrayList<Course> getFullCourses() {

@@ -71,11 +71,12 @@ public class Student extends User implements Serializable {
 					break;
 				}
 			}
+			//TODO -- save!
 		}
 	}
 
-	public Student(String password, String firstName, String lastName) {
-		super(new String(firstName + lastName), password);
+	public Student(String password, String firstName, String lastName, ArrayList<Course> courses) {
+		super(new String(firstName + lastName), password, courses);
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
