@@ -67,6 +67,8 @@ public class Student extends User implements Serializable {
 				case 'e':
 					viewCourses();
 					break;
+				case 'q':
+					break;
 				default:
 					System.out.println("Invalid Choice");
 					break;
@@ -114,10 +116,6 @@ public class Student extends User implements Serializable {
 
 	}
 
-	public boolean add(Course e) {
-		return myCourses.add(e);
-	}
-
 	public Student(String password, String firstName, String lastName, ArrayList<Course> courses) {
 		super(new String(firstName + lastName), password, courses);
 		this.firstName = firstName;
@@ -134,10 +132,6 @@ public class Student extends User implements Serializable {
 			System.out.println(course.Course_Name + " " + course.Course_Section_Number);
 		}
 
-	}
-
-	public void setCourses(ArrayList<Course> courses) {
-		this.courses = courses;
 	}
 
 	public void addCourse(Course course) {
@@ -170,7 +164,8 @@ public class Student extends User implements Serializable {
 	}
 
 	public void viewCourses() {
-		for (Course course : myCourses) {
+		for (int x = 0; x < courses.size(); x++) {
+			Course course = courses.get(x);
 			System.out.println("Name:\t" + course.Course_Name);
 			System.out.println("ID:\t" + course.Course_Id);
 			System.out.println("Section:\t" + course.Course_Section_Number);

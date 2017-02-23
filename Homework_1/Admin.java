@@ -230,8 +230,7 @@ public class Admin extends User {
 
 		// create a student object
 		Student stu = new Student(password, firstName, lastName, courses);
-		stu.setCourses(new ArrayList<Course>());
-
+		
 		// put student in list of students
 		students.add(stu);
 
