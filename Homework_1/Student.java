@@ -9,6 +9,7 @@ public class Student extends User implements Serializable {
 	private String firstName;
 	private String lastName;
 	private ArrayList<Course> courses;
+	private ArrayList<Course> myCourses;
 
 	public String getFirstName() {
 		return firstName;
@@ -79,6 +80,7 @@ public class Student extends User implements Serializable {
 		super(new String(firstName + lastName), password, courses);
 		this.firstName = firstName;
 		this.lastName = lastName;
+		myCourses = new ArrayList<Course>();
 	}
 
 	public void printCourses() {

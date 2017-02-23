@@ -57,6 +57,12 @@ public class Course implements Comparable, Serializable {
 	@Override
 	public int compareTo(Object o) {
 		// TODO Auto-generated method stub
+		try {
+			throw new Exception("Not Implemented");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return 0;
 	}
 
